@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style media="screen">
+    canvas{
+      border:1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <canvas id="canvas"></canvas>
+    <input type="color" name="color" value="">
+    <input type="button" name="eraserAll" value="초기화">
+    <input type="button" name="eraserAll" value="지우개">
+  </div>
+  <script>
+    let draw = document.getElementById("canvas"); //필수
+    let c = draw.getContext('2d'); //필수
+    console.log(window.innerWidth);
+    console.log(window.innerHeight);
+    let colorP = document.querySelector("input[name=color]"); //color value 받아오기 위함
+    let eraserAll = document.querySelector("input[name=eraserAll]"); //화면 전체 지우기
+    draw.setAttribute('width',window.innerWidth-200);
+    draw.setAttribute('height',window.innerHeight-200);
+//────────────────────────전체 지우기──────────────────────────────────
+    eraserAll.addEventListener('click', function(){
+      c.clearRect(0,0,draw.width,draw.height);
+    });
+//────────────────────────원으로 그림 그리기───────────────────────────
+    draw.addEventListener('mousemove', moveFill);
+
+    function moveFill(e){
+        if(e.buttons == 1){
+        c.beginPath();
+        c.arc(e.offsetX,e.offsetY,5,0,Math.PI * 2);
+        c.fillStyle= colorP.value;
+        c.fill();
+        }
+      }
+//────────────────────────부분 지우기─────────────────────────────────
+
+
+
+
+  </script>
+</body>
+</html>

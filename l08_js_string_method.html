@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>JS String method</title>
+  <style media="screen">
+    table{
+      width:100%;
+      border-collapse : collapse;
+      text-align : center;
+    }
+    canvas{
+      border:1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>자바스크립트 문자열 String의 메소드</h1>
+    <p>문자열은 유저에게 전달하는 데이터로 웹상에서 가장 많이 사용된다.
+      때문에 문자열을 다루는 함수가 많이 존재 한다.
+    </p>
+    <!-- table>(thead>tr>th*3)+tbody>(tr>td*3)*13 -->
+    <table border="4">
+      <thead>
+        <tr>
+          <th>method</th>
+          <th>설명</th>
+          <th>예시</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>toUpperCase(), toLowercase()</td>
+          <td>문자열의 대문자 or 소문자로 반환</td>
+          <td>
+            <script>document.write("aBc deFg".toUpperCase());</script>
+            <br><script>document.write("aBc deFg".toLowerCase());</script>
+          </td>
+        </tr>
+        <tr>
+          <td>trim()</td>
+          <td>문자열의 앞뒤 공백을 제거한다.</td>
+          <td>
+            " 요요요 "<script>document.write(" 요요요 ".length);</script>
+            <br>" 요요요 "<script>document.write(" 요요요 ".trim().length);</script>
+          </td>
+        </tr>
+        <tr>
+          <td>charAt(), charCodeAt()</td>
+          <td>0번째 문자 반환 / 0번째 문자 유니코드 반환</td>
+          <td>
+            "ABCDE".charCodeAt(0) :
+            <script>document.write("ABCDE".charCodeAt(0));</script>
+            <br>"ABCDE".charAt(0) :
+            <script>document.write("ABCDE".charAt(0));</script>
+            <br>"ABCDE"[0] :
+            <script>document.write("ABCDE"[0]);</script>
+          </td>
+        </tr>
+        <tr>
+          <td>slice(start, end)</td>
+          <td>일부 문자를 추출 할 때 사용</td>
+          <td>
+            "가가나나다다".slice(2,4) :
+            <script>document.write("가가나나다다".slice(2,4));</script>
+            <br>"가가나나다다".slice(-4,-2) :
+            <script>document.write("가가나나다다".slice(-4,-2));</script>
+            <br>"가가나나다다".slice(4) :
+            <script>document.write("가가나나다다".slice(4));</script>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>
+            <script>document.write();</script>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>
+            <script>document.write();</script>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>
+            <script>document.write();</script>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>
+            <script>document.write();</script>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>
+            <script>document.write();</script>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>
+            <script>document.write();</script>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>
+            <script>document.write();</script>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>
+            <script>document.write();</script>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>
+            <script>document.write();</script>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+
+</body>
+</html>
