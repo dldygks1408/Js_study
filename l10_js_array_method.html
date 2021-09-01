@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>JS array method</title>
+</head>
+<body>
+  <main>
+    <h1>자바스크립트 배열의 유용한 메소드</h1>
+    <script>
+      const a = ["c" , "a", "z", "f", "h", "e", "b"];
+    </script>
+    <p>
+      const a = ["c" , "a", "z", "f", "h", "e", "b"];
+    </p>
+    <ul>
+      <li>a.toString();
+        <ul>
+          <li>쉼표로 구분된 배열의 값을 문자열로 출력한다.
+            <script>
+              document.write(`<b> 결과 : [ ${a.toString()} ] </b>`);
+            </script>
+          </li>
+        </ul>
+      </li>
+      <li>a.join(" - ");
+        <ul>
+          <li>배열의 값을 join안에 문자열로 결합한 문자열을 출력한다.
+            <script>
+              document.write(`<b> 결과 : [ ${a.join(" - ")} ] </b>`);
+            </script>
+          </li>
+        </ul>
+      </li>
+      <li>a.pop();
+        <ul>
+          <li>배열의 마지막 값을 반환하고 제거한다.
+            <script>
+              document.write(`<b> 결과 : [ ${a.pop()} ], a : [ ${a} ]</b>`);
+            </script>
+          </li>
+        </ul>
+      </li>
+      <li>a.push("추가");
+        <ul>
+          <li>배열의 마지막에 새 값을 추가 한다.
+            <script>
+              document.write(`<b> 결과 : [ ${a.push("추가")} ], a : [ ${a} ] </b>`);
+            </script>
+          </li>
+        </ul>
+      </li>
+      <li>a[maxIndex+1==a.length]
+        <ul>
+          <li>배열의 마지막에 새 값을 추가 한다.
+            <script>
+              document.write(`<b> 결과 : [ ${a[a.length]="또추가"} ], a : [ ${a} ] </b>`);
+            </script>
+          </li>
+        </ul>
+      </li>
+      <li>a.shift();
+        <ul>
+          <li>배열의 첫번째 값을 반환하고 제거한다. (모든 인덱스를 한칸 당긴다.)
+            <script>
+              document.write(`<b> 결과 : [ ${a.shift()} ], a : [ ${a} ] </b>`);
+            </script>
+          </li>
+        </ul>
+      </li>
+      <li>a.unshift("이것도추가");
+        <ul>
+          <li>배열의 첫번째에 새 값을 추가한다.(모든 인덱스가 한칸 밀린다.)
+            <script>
+              document.write(`<b> 결과 :  [ ${a.unshift("이것도추가")} ], [ ${a} ] </b>`);
+            </script>
+          </li>
+        </ul>
+      </li>
+      <li>a.concat([1 ,"또", "요요"]);
+        <ul>
+          <li>배열의 끝에 새로운 배열을 추가한 배열을 반환한다.
+            <br>(배열 바꾸지 않고 다른 배열을 반환한다.)
+            <script>
+              let ab = a.concat([1 ,"또", "요요"]);
+              document.write(`<b> 결과 : [ ${ab} ] </b>`);
+            </script>
+          </li>
+        </ul>
+      </li>
+      <li>a.slice(1,4);
+        <ul>
+          <li>특정 위치(start ~ end) 의 배열을 배열로 반환한다.
+            <script>
+              document.write(`<b> 결과 : [ ${a.slice(1,4)} ], a : [ ${a} ] </b>`);
+            </script>
+          </li>
+        </ul>
+      </li>
+      <li>a.splice(start, delet_length, insertItem);
+        <ul>
+          <li>특정 위치부터 원하는 길이까지 삭제하고 추가 할 수 있다.
+            <script>
+              // document.write(`<b> 결과 : [ ${a.splice(3)} ], a : [ ${a} ] </b>`);// 3이후 다 삭제
+              document.write(`<br><b> 결과 : [ ${a.splice(3,1,"계속추가")} ], a : [ ${a} ] </b>`);
+              document.write(`<br><b> 결과 : [ ${a.splice(3,1)} ], a : [ ${a} ] </b>`);
+              document.write(`<br><b> 결과 : [ ${a.splice(3,0,"??")} ], a : [ ${a} ] </b>`);
+            </script>
+          </li>
+        </ul>
+      </li>
+      <li>a.sort();
+        <ul>
+          <li>배열의 요소를 순서대로 정렬한다.
+            <script>
+              document.write(`<b> 결과 : [ ${a.sort()} ] </b>`);
+            </script>
+          </li>
+        </ul>
+      </li>
+      <li>a.reverse();
+        <ul>
+          <li>배열의 요소를 역순으로 정렬한다.
+            <script>
+              document.write(`<b> 결과 : [ ${a.reverse()} ] </b>`);
+            </script>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <hr>
+    <article>
+      <h2>배열 문제</h2>
+      <form action="#">
+        <p>
+          <label>
+            블랙 : <input type="checkbox" name="" value="블랙">
+          </label>
+          <label>
+            레드 : <input type="checkbox" name="" value="레드">
+          </label>
+          <label>
+            그린 : <input type="checkbox" name="" value="그린">
+          </label>
+          <label>
+            블루 : <input type="checkbox" name="" value="블루">
+          </label>
+          <label>
+            화이트 : <input type="checkbox" name="" value="화이트">
+          </label>
+          <label>
+            레몬 : <input type="checkbox" name="" value="레몬">
+          </label>
+          <label>
+            오렌지 : <input type="checkbox" name="" value="오렌지" >
+          </label>
+        </p>
+        <p>
+          <input type="text" name="" value="" placeholder="레몬,화이트">
+        </p>
+      </form>
+<script>
+    const labelVal = document.querySelectorAll('label>input');
+    const inputVal = document.querySelectorAll('p>input');
+    console.log(labelVal[0].value); //color
+    console.log(inputVal);
+
+    inputVal[0].addEventListener('input', test);
+
+    function test(e){
+      let splitTest = e.target.value.split(",");
+
+      for (var i = 0; i < labelVal.length; i++) {
+        console.log(splitTest);
+        for (var j = 0; j < splitTest.length; j++) {
+          if(splitTest[j] == labelVal[i].value){
+            labelVal[i].checked=true;
+          }
+        }
+      }
+    }
+    // const inputVal = document.querySelectorAll('label>input');
+    // const textBox = document.querySelectorAll('p>input');
+    // console.log(textBox);
+    // console.log(inputVal);
+  // const inputVal = document.querySelectorAll('label>input');
+  // const textBox = document.querySelectorAll('p>input');
+  //
+  //
+  //   textBox[0].addEventListener('input', test);
+  // //
+  // function test(e) {
+  //   let replaceTest = e.target.value;
+  //   let splitTest = replaceTest.split(",");
+  //   for (var i = 0; i < inputVal.length; i++) {
+  //     console.log(e.target.value);
+  //     console.log(splitTest)
+  //     if(splitTest.sort() == inputVal[i].value){
+  //       inputVal[i].checked = true;
+  //       console.log(inputVal[i].value);
+  //     }
+  //   }
+  // }
+  //
+  // //   //inputVal 값들을 다 빼서? 그중에 순서 상관없이 입력한 값들이 있냐?
+  // //   //그걸 우찌하냐?
+  //   let stringTest ="";
+  //   for (var i = 0; i < splitTest.length; i++) {
+  //     if(splitTest[i] == inputVal[i].value){
+  //       stringTest += inputVal[i].value;
+  //       console.log(inputVal[i].value);
+  //       inputVal[i].checked = true;
+  //       console.log(stringTest);
+  //     }
+  //   }
+  //   console.log(splitTest);
+  // }
+
+//trim()  replace(" ", ",")  join() .split(" ") sort()? ?
+</script>
+    </article>
+  </main>
+</body>
+</html>

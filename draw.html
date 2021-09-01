@@ -6,47 +6,102 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <style media="screen">
+    body{
+      margin-top: 50px;
+      background: linear-gradient(to right,
+              rgb(102, 97, 97),rgb(129, 83, 115),rgb(100, 171, 116),rgb(129, 83, 115),rgb(102, 97, 97));
+    }
     canvas{
       border:1px solid black;
+      background: white;
+    }
+    table{
+      text-align: center;
+      width: 50%;
+      margin: auto;
+    }
+    table tr td{
+      margin: auto;
+      text-align: center;
+    }
+    .drawContainer{
+      text-align: center;
+    }
+    .btnContainer{
+      text-align: center;
+    }
+    input{
+      width: 70px;
+      height: 50px;
+      cursor: pointer;
+    }
+    input[type=range]{
+      width: 100px;
     }
   </style>
 </head>
 <body>
-  <div>
+  <div class="drawContainer">
     <canvas id="canvas"></canvas>
-    <input type="color" name="color" value="">
-    <input type="button" name="eraserAll" value="초기화">
-    <input type="button" name="eraserAll" value="지우개">
+  </div>
+  <div class="btnContainer">
+    <table>
+      <tr>
+        <td><input type="color" name="color" value=""></td>
+        <td><input type="button" name="eraserAll" value="초기화"></td>
+        <td><input type="button" name="eraser" value="지우개"></td>
+        <td><b>Size : </b><input type="range" name="size" value="15" max="30" min="5" step="5"></td>
+      </tr>
+    </table>
   </div>
   <script>
     let draw = document.getElementById("canvas"); //필수
     let c = draw.getContext('2d'); //필수
-    console.log(window.innerWidth);
-    console.log(window.innerHeight);
-    let colorP = document.querySelector("input[name=color]"); //color value 받아오기 위함
-    let eraserAll = document.querySelector("input[name=eraserAll]"); //화면 전체 지우기
-    draw.setAttribute('width',window.innerWidth-200);
-    draw.setAttribute('height',window.innerHeight-200);
+
+//────────────────────────Canvas 영역 설정──────────────────────────────────
+    draw.setAttribute('width',window.innerWidth-200);   //그리기 공간 설정
+    draw.setAttribute('height',window.innerHeight-400); //그리기 공간 설정
+
+    window.addEventListener('resize', function(){  //window에 resize 발생시 반응형 사이즈
+      draw.setAttribute('width',window.innerWidth-200);
+      draw.setAttribute('height',window.innerHeight-400);
+    });
 //────────────────────────전체 지우기──────────────────────────────────
+    let eraserAll = document.querySelector("input[name=eraserAll]"); //화면 전체 지우기
+
     eraserAll.addEventListener('click', function(){
       c.clearRect(0,0,draw.width,draw.height);
     });
 //────────────────────────원으로 그림 그리기───────────────────────────
-    draw.addEventListener('mousemove', moveFill);
+    let colorP = document.querySelector("input[name=color]"); //color value 받아오기 위함
+    let size = document.querySelector("input[name=size]");//붓 size 조절
 
+    draw.addEventListener('mousemove', moveFill);
     function moveFill(e){
+      if(test == 1){
         if(e.buttons == 1){
-        c.beginPath();
-        c.arc(e.offsetX,e.offsetY,5,0,Math.PI * 2);
-        c.fillStyle= colorP.value;
-        c.fill();
+          c.beginPath();
+          c.arc(e.offsetX,e.offsetY,size.value,0,Math.PI * 2);
+          c.fillStyle= colorP.value;
+          c.fill();
+        }
+      }else{
+        if(e.buttons == 1){
+          c.clearRect(e.offsetX,e.offsetY,5,5);
         }
       }
+    }
 //────────────────────────부분 지우기─────────────────────────────────
+draw.addEventListener('mousemove', moveFill);
+let eraser = document.querySelector("input[name=eraser]"); //부분 지우기
+let test = 1;
 
-
-
-
+  eraser.addEventListener('click', function(){ // 2를 리턴 하면 지우개
+    return test = 2;
+  });
+  colorP.addEventListener('click', function(){ // 1 리턴하면 그리기
+    return test = 1;
+  })
   </script>
 </body>
 </html>
