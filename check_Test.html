@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>js array method</title>
+    <style media="screen">
+      .boxContainer{
+        width: 400px;
+        padding: 20px;
+        border: 1px solid black;
+        border-radius: 20px;
+      }
+      div{
+        width: 50px;
+        height : 50px;
+        background: #eee;
+        display: inline-block;
+      }
+      h2{
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <article>
+        <h2>TEST</h2>
+        <form>
+          <p>
+            <label>
+              화이트 :
+              <input type="checkbox" value="화이트" />
+            </label>
+            <label>
+              레몬 : <input type="checkbox" value="레몬" />
+            </label>
+            <label>
+              오렌지 :
+              <input type="checkbox" value="오렌지" />
+            </label>
+            <label>
+              블루 : <input type="checkbox" value="블루" />
+            </label>
+            <label>
+              그린 : <input type="checkbox" value="그린" />
+            </label>
+            <label>
+              레드 : <input type="checkbox" value="레드" />
+            </label>
+            <label>
+              블랙 : <input type="checkbox" value="블랙"/>
+            </label>
+          </p>
+          <p>
+            <input type="text"  placeholder="레몬, 화이트" value=""/>
+          </p>
+        </form>
+      </article>
+
+    </main>
+<script>
+  const typeCheck = document.querySelectorAll('input[type=checkbox]');
+  const typeText = document.querySelector('input[type=text]');
+
+  typeText.addEventListener('input', textPrint);
+
+  function textPrint(e){
+    let realVal = e.target.value.split(",");
+
+    for (let i = 0; i < realVal.length; i++) {
+      for (let j = 0; j < typeCheck.length; j++) {
+        if(realVal[i].trim() == typeCheck[j].value){
+          typeCheck[j].checked = true;
+        }
+      }
+    }
+    typeText.addEventListener('focusout', function(){
+      typeText.value = "";
+      for (let i = 0; i < typeCheck.length; i++) {
+          typeCheck[i].checked = false;
+      }
+    })
+  }
+</script>
+  </body>
+</html>

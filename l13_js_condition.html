@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>JS condition</title>
+</head>
+<body>
+  <main>
+    <h1>자바스크립트의 조건문</h1>
+    <p>블럭안의 실행을 조건에 따라 동적으로 선택되게 하는 조건문 if, switch, 삼항연산자</p>
+    <article>
+      <h2>if 조건문</h2>
+      <p>if( 조건 ){ 블럭 } : 조건이 참이면(true) 블럭을 실행한다.</p>
+      <p>if( ){ }else{ } : if의 조건이 맞지 않으면 else의 블럭을 실행한다.</p>
+      <p>if( 조건1 ){ 블럭 }else if( 조건2 ){ 블럭 }else{ } :
+        <br>1조건 만족시 1번 블럭 실행 1번 조건이 만족하지 않으면 2번조건 실행, 모두 만족하지 않으면 else 실행
+      </p>
+      <p>
+        <b id="ifTestPrint"></b>
+      </p>
+      <ul>
+        <li>if(value &lt 50) { } :
+          <input type="text" onchange="ifTest(this.value)" placeholder="50보다 작은 수 입력">
+<script>
+  let ifTestPrint = document.getElementById('ifTestPrint');
+  const ifTest = function(v){
+    if(v<50){
+      ifTestPrint.innerText = `${v}를 입력하셨습니
+      다.`;
+    }else {
+      ifTestPrint.innerText = `오류 `;
+    }
+  }
+</script>
+        </li>
+        <li>if(value &gt 20 && value &lt 50) { } :
+          <input type="text" onchange="ifTest2(this.value)" placeholder="50보다 작고 20보다 큰 수">
+<script>
+  const ifTest2 = function(v){
+    if(v>20 && v<50){
+      ifTestPrint.innerText = `${v}를 입력하셨습니다.`;
+    }
+  }
+</script>
+        </li>
+        <li>if(value &lt 20 || value &gt 50) { } :
+          <input type="text" onchange="ifTest3(this.value)" placeholder="50보다 크거나 20보다 작은 수">
+<script>
+  const ifTest3 = function(v){
+    let msg =v;
+    if(v<20 || v>50){
+      msg+="를 입력하셨습니다.";
+    }else if(v<=20 && v>=50){
+      msg+="50보다 크거나 작은 수 입력"
+    }else{
+      msg+="수를 입력하세요."
+    }
+    ifTestPrint.innerText = msg;
+  }
+</script>
+        </li>
+        <li>if(value>=10 && value<=20 || value>=30 && value<=40){
+          <input type="text" onchange="ifTest4(this.value)" placeholder="10~20 이거나 30~40">
+<script>
+  const ifTest4 = function(v){
+    if(v>=10 && v<=20 || v>=30 && v<=40){
+      ifTestPrint.innerText = `${v}를 입력하셨습니다.`;
+    }
+  }
+</script>
+        </li>
+      </ul>
+    </article>
+    <article>
+      <h2>Switch 조건문</h2>
+      <pre>작성법
+        switch(표현식 or 변수){
+          case a :
+            실행
+           break;
+          case b :
+            실행
+           break;
+          case c :
+            실행
+           break;
+           default:
+        }</pre>
+      <p>스위치 케이스는 엄격한 비교(===)을 사용하고 위에서 부터 일치하는 항목을 찾으면
+        스위치는 종료된다.(엄격한 비교 외의 조건을 사용 할 수 없다.)
+      </p>
+      <p>if에서 else if 문과 동일하게 작동하지만 조건문의 수행 속도가 굉장히 빠르다.
+        <br>조건을 파악하기 굉장히 좋다.
+      </p>
+      <p>
+        <label>
+          콘솔에 입력값 출력
+          <select class="" name="" onchange="switchTest(this.value)">
+            <option value="0" id="testV">입력값 : 0 </option>
+            <option value="1">입력값 : 1 </option>
+            <option value="2">입력값 : 2 </option>
+            <option value="3">입력값 : 3 </option>
+          </select>
+        </label>
+      </p>
+
+<script>
+  console.log(typeof document.getElementById('testV').value);
+
+  function switchTest(x){
+    switch (Number(x)) {
+      case 0 : console.log("입력한 값은 0입니다.");
+        break;
+      case 1 : console.log("입력한 값은 1입니다.");
+        break;
+      case 2 : console.log("입력한 값은 2입니다.");
+        break;
+      default:  console.log("입력한 값 있냐?");
+    }
+  }
+
+  function ifTest1(x){
+    if(x===0){
+      console.log("입력한 값은 0입니다.");
+    }else if(x===1){
+      console.log("입력한 값은 1입니다.");
+    }else if(x===2){
+      console.log("입력한 값은 2입니다.");
+    }else{
+      console.log("입력한 값 있냐?");
+    }
+  }
+
+  console.time("time");
+  console.timeLog("time");
+  switchTest(1);
+  console.timeEnd("time");
+
+  console.time("time2");
+  console.timeLog("time2");
+  ifTest1(1);
+  console.timeEnd("time2");
+
+</script>
+    </article>
+  </main>
+</body>
+</html>
