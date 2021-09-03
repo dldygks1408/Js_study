@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      h2{
+        display : inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>TEST</h1>
+    <h2>설정</h2>
+    <select>
+      <option value="black">블랙</option>
+      <option value="default">기본</option>
+      <option value="darkgray">메탈</option>
+      <option value="pink">핑크</option>
+    </select>
+
+    <nav>
+      <ul id="popNav" onmouseenter="this.style.background='red'" >
+        <li>html Study
+          <ul class="pop_nav" style="display:none">
+            <li><a href="#">intro</a></li>
+            <li><a href="#">basic</a></li>
+            <li><a href="#">attributes</a></li>
+            <li><a href="#">style</a></li>
+          </ul>
+        </li>
+        <li>js Study
+          <ul class="pop_nav" style="display:none">
+            <li><a href="#">intro</a></li>
+            <li><a href="#">variable</a></li>
+            <li><a href="#">data type</a></li>
+            <li><a href="#">number</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+<script>
+  let themes = {black : ["black","white"],
+                default : ["white","black"],
+                darkgray : ["darkgray","bisque"],
+                pink : ["lavender","indigo"]};
+  let optionVal = document.querySelector('select');
+
+  optionVal.addEventListener('change', themeHandler);
+
+  function themeHandler(e){
+    let eVal = e.target.value;
+    document.querySelector('body').style.background = themes[eVal][0];
+    document.querySelector('body').style.color = themes[eVal][1];
+  }
+
+
+  // <!-- #popNav>li 에 마우스를 올리면 (mouseenter) .pop_nav의 display를 block으로 바꿔 화면에 보이게 하고 -->
+  // <!-- 마우스를 빼면 (mouseleave) .pop_nav의 display를 none으로 바꿔 화면에 안보이게 하자 -->
+  let navLi = document.querySelectorAll('#popNav>li');
+  let popLi = document.querySelectorAll('.pop_nav');
+
+  for (var i = 0; i < navLi.length; i++) {
+    navLi[i].addEventListener('mouseenter', navLiHandler);
+  }
+
+  function navLiHandler(){
+    for (var i = 0; i < popLi.length; i++) {
+      popLi[i].style.display = 'block';
+    }
+  }
+
+</script>
+
+  </body>
+</html>

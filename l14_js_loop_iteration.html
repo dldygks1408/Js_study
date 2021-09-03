@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>JS Loop Iteration</title>
+  </head>
+  <body>
+    <main>
+      <h1>자바 스크립트의 루프와 반복</h1>
+      <p>for, forin, forof, while, dowhile 반복문(Iteration Statements)이 있다.</p>
+      <p>똑같은 명령을 일정 횟수 만큼 반복하기 위해 작성되는 문법 대체로 검사식에 많이 사용된다.</p>
+      <article>
+        <h2>for 반복문</h2>
+        <p>for( 선언문; 조건문; 증가문; ) : for 는 조건이 true 일때 반복실행한다.</p>
+        <ul>
+          <h3>버블 정렬</h3>
+          <li>[11,2,20,3,13,1,0,-20] max :
+<script>
+  let arrayNum = [11,2,20,3,13,1,0,-20];
+  let max = (-Infinity);
+  for (var i = 0; i < arrayNum.length; i++) {
+    if(max<arrayNum[i]){
+      max = arrayNum[i];
+    }
+  }
+  document.write(`<b>${max}</b>`);
+</script>
+          </li>
+          <li>[11,2,20,3,13,1,0,-20] 높은 순서대로 정렬하세요.
+<script>
+  let a = [2,11,20,3,-20,13,1,0];
+  let temp;
+  for(let i = 0; i<a.length-1; i++){
+    for (var j = 0; j < a.length - 1 - i; j++) {
+      // console.log(i + "/" + j + " =" + a);
+      if (a[j] < a[j+1]) {
+        temp = a[j];
+        a[j] = a[j+1];
+        a[j+1] = temp;
+      }
+    }
+  }
+  document.write(`<br><b> [ ${a} ] </b>`);
+</script>
+          </li>
+          <li>[11,2,20,3,13,1,0,-20] 낮은 순서대로 정렬하세요.
+<script>
+  for(let i = 0; i<a.length-1; i++){
+    for (var j = 0; j < a.length - 1 - i; j++) {
+      if (a[j] > a[j+1]) {
+        temp = a[j];
+        a[j] = a[j+1];
+        a[j+1] = temp;
+      }
+    }
+  }
+  document.write(`<br><b> [ ${a} ] </b>`);
+</script>
+          </li>
+          <h3>선택 정렬</h3>
+          <p>전체 중에 가장 높은 값의 위치를 찾아서 앞자리와 바꿔라
+            <br>맨 앞자리를 제외하고 제일 높은 값을 찾아서 맨 앞자리로 바로 뒤랑 바꿔라
+          </p>
+          <li>[11,2,20,3,13,1,0,-20] 높은 순서대로 정렬하세요.
+<script>
+  // let b = [11,2,30,3,13,1,0,-20];
+  // let tem;
+  // console.log(b);
+  //
+  // for (var i = 0; i < b.length; i++) {
+  //   for (var j = 0; j < b.length; j++) {
+  //     if(max < b[j]){
+  //
+  //       // max = b[j];
+  //       // tem = max;
+  //       // tem = b[i];
+  //       // b[i+1] = tem;
+  //       // b[i] = max;
+  //     }
+  //   }
+  // }
+  // console.log(b);
+  // console.log(max);
+
+</script>
+          </li>
+        </ul>
+<script>
+  for (var i = 0; i < 5; i++) {
+    for (var j = 0; j < 5; j++) {
+      document.write("　*");
+    }
+      document.write("<br>");
+  }
+
+  document.write("<br>");
+
+  for (var i = 0; i < 5; i++) {
+    for (var j = 0; j < 5; j++) {
+      if(i >= j)
+      document.write("　*");
+    }
+    document.write("<br>");
+  }
+
+  document.write("<br>");
+
+  for (var i = 0; i < 5; i++) {
+    for (var j = 0; j < 5; j++) {
+      if(i <= j)
+      document.write("　*");
+    }
+    document.write("<br>");
+  }
+
+  document.write("<br>");
+
+  for (var i = 0; i > 5; i++) {
+    for (var j = 0; j < 9; j++) {
+
+    }
+  }
+
+  // 4까지 공백  * 1개 br
+  // 3까지 공백  * 3개 br
+  // 2까지 공백  * 5개 br
+  // 1까지 공백  * 7개 br
+  // * 다 출력   * 9개 br
+  // 1 2 3 4 * 1 2 3 4   1
+  // 1 2 3 * * * 1 2 3   3
+  // 1 2 * * * * * 1 2   5
+  // 1 * * * * * * * 1   7
+  // * * * * * * * * *   9
+
+</script>
+
+      </article>
+      <article>
+        <h2>forin 반복문</h2>
+        <p>for( key in IterationObject ){ } : key를 가진 객체가 key를 반환 할 수 없을때까지 반복을 실행</p>
+        <p>JSON{key:value, key:value} => key를 반환, Array[a,b,c] => index를 반환</p>
+        <ul>
+          <li> [a, b, c] :
+<script>
+  let f = ["a", "b", "c"];
+  for(i in f){
+    document.write(`${f[i]}`);
+  }
+</script>
+          </li>
+          <li>
+            {name: "이요한", age=31, email="dldygks@aa.cc"}
+<script>
+  let g = { name : "이요한",
+            age : 31,
+            email : "dldygks@aa.cc"};
+
+  for(key in g){
+    document.write(`<br>key : ${key}, value : ${g[key]}`);
+  }
+
+</script>
+          </li>
+          <li>"abcde"
+<script>
+  let s = "abcde";
+  for(key in s){
+    document.write(`<br>key : ${key}, value : ${s[key]}`);
+  }
+</script>
+          </li>
+        </ul>
+      </article>
+      <article>
+        <h2>forof 반복문</h2>
+        <p>for(Object of IterationObject)</p>
+        <p>반복 가능한 데이터 타입의 객체에서 더이상 내용물이 나오지 않을때까지 반복 실행</p>
+        <p>{IterationObject}.next() : next()는 포인트가 객체 밖에 있다가 내용물이 있으면 true를 반환 하고
+          내용물로 포인트를 옮긴다. 그리고 내용물도 반환한다.
+          만약에 값이 더이상 나오지 않으면 false를 반환한다.
+        </p>
+        <p>단점은 key 값을 알아내기 힘들다.</p>
+        <p>배열, Map(json과 비슷), Set(배열인데 복수의 값을 제거)</p>
+        <ul>
+          <li>
+<script>
+
+  for (v of f) {
+    document.write(` ${v} `);
+  }
+</script>
+          </li>
+          <li>
+<script>
+
+  for (v of s) {
+    document.write(` ${v} `);
+  }
+</script>
+          </li>
+        </ul>
+      </article>
+    </main>
+  </body>
+</html>

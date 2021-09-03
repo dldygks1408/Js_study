@@ -133,6 +133,7 @@
     }
   }
 
+
   console.time("time");
   console.timeLog("time");
   switchTest(1);
@@ -145,6 +146,29 @@
 
 </script>
     </article>
+    <article>
+      <h2>삼항연산자</h2>
+      <p> 작성법 1 : (조건문) ? true : false  == if(조건문){ true }else{ false }</p>
+      <p> 작성법 2 : let variable = (condition) ? trueObject : falseObject;</p>
+      <pre> 작성법 3 :
+        (condition) ? true
+      : (condition2) ? true
+      : (condition3) ? true
+      : false;</pre>
+      <p>조건 파악이 편하고 코드가 간결해 프로그래밍 속도를 올려준다.</p>
+      <ul>
+        <li>
+          <script>document.write( `(1>0)? "1>0" : "1<0" = ${(1>0)? "1>0" : "1<0"} `)</script>
+        </li>
+        <li>
+          <script>document.write( `(true)? "참" : "거짓" = ${(true)? "참" : "거짓"} `)</script>
+        </li>
+        <li>
+          <script>document.write( `(false)? "참" : "거짓" = ${(false)? "참" : "거짓"} `)</script>
+        </li>
+      </ul>
+    </article>
   </main>
+
 </body>
 </html>
