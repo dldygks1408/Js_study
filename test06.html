@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <article>
+    <h2>Test</h2>
+    <ul>
+      <li>총점 구하기 <input type="button" value="총점"></li>
+      <li>평균 구하기 <input type="button" value="평균"></li>
+      <li>최소 점수 구하기 <input type="button" value="최소"></li>
+      <li>최대 점수 구하기 <input type="button" value="최대"></li>
+      <li>50점 이하가 있는지 구하기 <input type="button" value="낙제"></li>
+      <li>100점이 있는지 구하기 <input type="button" value="만점"></li>
+      <li>모든 점수를 100점 만점에서 4.5점 만점으로 변경하세요.
+        <input type="button" name="button" value="4.5점"></input>
+      </li>
+      <li>결과보기 <input type="button" value="결과"></li>
+    </ul>
+    <form name="someTestForm">
+      <div class="score">
+        <p>
+          <label>수 학 점 수 : <input type="number" name="m" value="70"></label>
+        </p>
+        <p>
+          <label>영 어 점 수 : <input type="number" name="e" value="90"></label>
+        </p>
+        <p>
+          <label>화 학 점 수 : <input type="number" name="c" value="100"></label>
+        </p>
+        <p>
+          <label>국 사 점 수 : <input type="number" name="h" value="30"></label>
+        </p>
+        <p>
+          <label>국 어 점 수 : <input type="number" name="k" value="40"></label>
+        </p>
+      </div>
+      <hr>
+      <div class="print">
+        <p>
+          <label>최 종 점 수 : <input type="number" name="total" value="0" readonly></label>
+        </p>
+        <p>
+          <label>평 균 점 수 : <input type="number" name="avg" value="0" readonly></label>
+        </p>
+        <p>
+          <label>최 소 점 수 : <input type="number" name="min" value="0" readonly></label>
+        </p>
+        <p>
+          <label>최 대 점 수 : <input type="number" name="max" value="0" readonly></label>
+        </p>
+        <p>
+          <label>점수가(>50) 있는지(0/1) : <input type="number" name="is_f" value="0" readonly></label>
+        </p>
+        <p>
+          <label>만점이 있는지(0/1) : <input type="number" name="is_ten" value="0" readonly></label>
+        </p>
+      </div>
+    </form>
+    <table border="1" style="display : ;">
+      <tr>
+        <td>과목</td>
+        <td>점수</td>
+        <td>4.5점</td>
+        <td>낙제</td>
+        <td>만점</td>
+        <td>성적(A~C)</td>
+      </tr>
+      <tr>
+        <td>수학</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>영어</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>화학</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>국사</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>국어</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+<script>
+console.log(document.querySelectorAll('.print input')); // print 영역 input
+const inputBtn = document.querySelectorAll("[type=button]"); //모든 버튼
+const scoreList = document.querySelectorAll(".score input");  //점수 목록
+const totalInput = document.querySelector("input[name=total]"); // 토탈
+const avgInput = document.querySelector("input[name=avg]"); // 평균
+const tenInput = document.querySelector("input[name=is_ten]"); //만점
+const fInput = document.querySelector("input[name=is_f]");  // 낙제
+console.log(inputBtn);
+for (var i = 0; i < inputBtn.length; i++) {
+  inputBtn[i].addEventListener('click', btnHandler);
+}
+// buttons["총점"]   //이런식으로 할 수 있다.
+// const buttons={   // 확인할것
+//       "총점" : function(for (var i = 0; i < scoreList.length; i++) {
+//       sum += Number(scoreList[i].value);
+//     }
+// totalInput.value = sum;){}
+//   "평균" :
+// }
+function btnHandler(){
+  let sum = 0;
+  let count = 0;
+  console.log(this.value);
+  switch (this.value) {
+    case "총점" :
+      for (var i = 0; i < scoreList.length; i++) {
+        sum += Number(scoreList[i].value);
+      }
+      totalInput.value = sum;
+    break;
+    case "평균" :
+      for (var i = 0; i < scoreList.length; i++) {
+        sum += Number(scoreList[i].value);
+      }
+      avgInput.value = sum / scoreList.length;
+    break;
+    case "4.5점" :
+      for (var i = 0; i < scoreList.length; i++) {
+        scoreList[i].value = scoreList[i].value*0.045;
+      }
+    break;
+    case "만점" :
+      for (var i = 0; i < scoreList.length; i++) {
+        if(Number(scoreList[i].value == 100)){
+          tenInput.value = 1 + count++; //만점 카운트
+        }
+      }
+    break;
+    case "낙제" :
+      scoreList.forEach( (v)=> {
+        if( v.value <= 50){
+          fInput.value = 1 + count++;
+        }
+      });
+    break;
+    case "최소" :
+      for (var i = 0; i < scoreList.length; i++) {
+        // console.log(Math.max(Number(...scoreList[i])));
+        // console.log(scoreList[i]);
+        }
+    break;
+    let newArray = [];
+    case "최대" :
+      scoreList.forEach( (v)=> {
+        newArray.push(Math.max(v));
+        console.log(newArray);
+        // console.log(Math.max());
+      });
+    break;
+
+    default:
+  }
+}
+
+</script>
+  </article>
+</body>
+</html>
