@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+<style>
+  table{
+    border-collapse: collapse;
+    width: 1000px;
+  }
+</style>
 </head>
 <body>
   <article>
@@ -61,132 +67,118 @@
         </p>
       </div>
     </form>
-    <table border="1" style="display : ;">
-      <tr>
-        <td>과목</td>
-        <td>점수</td>
-        <td>4.5점</td>
-        <td>낙제</td>
-        <td>만점</td>
-        <td>성적(A~C)</td>
-      </tr>
-      <tr>
-        <td>수학</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>영어</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>화학</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>국사</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>국어</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </table>
-<script>
-console.log(document.querySelectorAll('.print input')); // print 영역 input
-const inputBtn = document.querySelectorAll("[type=button]"); //모든 버튼
-const scoreList = document.querySelectorAll(".score input");  //점수 목록
-const totalInput = document.querySelector("input[name=total]"); // 토탈
-const avgInput = document.querySelector("input[name=avg]"); // 평균
-const tenInput = document.querySelector("input[name=is_ten]"); //만점
-const fInput = document.querySelector("input[name=is_f]");  // 낙제
-console.log(inputBtn);
-for (var i = 0; i < inputBtn.length; i++) {
-  inputBtn[i].addEventListener('click', btnHandler);
-}
-// buttons["총점"]   //이런식으로 할 수 있다.
-// const buttons={   // 확인할것
-//       "총점" : function(for (var i = 0; i < scoreList.length; i++) {
-//       sum += Number(scoreList[i].value);
-//     }
-// totalInput.value = sum;){}
-//   "평균" :
-// }
-function btnHandler(){
-  let sum = 0;
-  let count = 0;
-  console.log(this.value);
-  switch (this.value) {
-    case "총점" :
-      for (var i = 0; i < scoreList.length; i++) {
-        sum += Number(scoreList[i].value);
-      }
-      totalInput.value = sum;
-    break;
-    case "평균" :
-      for (var i = 0; i < scoreList.length; i++) {
-        sum += Number(scoreList[i].value);
-      }
-      avgInput.value = sum / scoreList.length;
-    break;
-    case "4.5점" :
-      for (var i = 0; i < scoreList.length; i++) {
-        scoreList[i].value = scoreList[i].value*0.045;
-      }
-    break;
-    case "만점" :
-      for (var i = 0; i < scoreList.length; i++) {
-        if(Number(scoreList[i].value == 100)){
-          tenInput.value = 1 + count++; //만점 카운트
-        }
-      }
-    break;
-    case "낙제" :
-      scoreList.forEach( (v)=> {
-        if( v.value <= 50){
-          fInput.value = 1 + count++;
-        }
-      });
-    break;
-    case "최소" :
-      for (var i = 0; i < scoreList.length; i++) {
-        // console.log(Math.max(Number(...scoreList[i])));
-        // console.log(scoreList[i]);
-        }
-    break;
-    let newArray = [];
-    case "최대" :
-      scoreList.forEach( (v)=> {
-        newArray.push(Math.max(v));
-        console.log(newArray);
-        // console.log(Math.max());
-      });
-    break;
-
-    default:
-  }
-}
-
-</script>
   </article>
+  <table border="1" style="display : none;">
+    <tr>
+      <td>과목</td>
+      <td>점수</td>
+      <td>4.5점</td>
+      <td>낙제</td>
+      <td>만점</td>
+      <td>성적(A~C)</td>
+    </tr>
+    <tr>
+      <td>수학</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>영어</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>화학</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>국사</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>국어</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+<script>
+const scoreList = document.querySelectorAll('.score input');  //점수 받기
+const printList = document.querySelectorAll('.print input');  // 출력하기
+const btnList = document.querySelectorAll('input[type=button]'); // 버튼 클릭하기
+const tdList = document.querySelectorAll('table tr td'); //출력 테이블
+
+  for (let i = 0; i < btnList.length; i++) {
+    btnList[i].addEventListener('click', btnHandler);
+  };
+
+  function btnHandler(){
+    let te = printList;
+    let sum = 0;
+    let testVal = this.value;
+    let count = 1;
+    let newScore = [];
+
+    if(testVal == "총점"){
+      scoreList.forEach( v =>{
+        sum += Number(v.value);
+      });
+      te[0].value = sum;
+    }else if(testVal == "평균"){
+      for (let i = 0; i < scoreList.length; i++) {
+        sum += Number(scoreList[i].value);
+      }
+      te[1].value = sum / scoreList.length;
+    }else if(testVal == "최소"){
+      for (let i = 0; i < scoreList.length; i++) {
+        newScore.push(Number(scoreList[i].value));
+      }
+      te[2].value = Math.min(...newScore);
+    }else if(testVal == "최대"){
+      for (let i = 0; i < scoreList.length; i++) {
+        newScore.push(Number(scoreList[i].value));
+      }
+      te[3].value = Math.max(...newScore);
+    }else if(testVal == "낙제"){
+      scoreList.forEach( v => {
+        if(Number(v.value) <= 50){
+          te[4].value = count++;
+        }
+      })
+    }else if(testVal == "만점"){
+      scoreList.forEach( v => {
+        if(Number(v.value) == 100){
+          te[5].value = count++;
+        }
+      })
+    }else if(testVal == "4.5점"){
+      scoreList.forEach( v => {
+        v.value = v.value*0.045;
+      })
+    }else if(testVal == "결과"){
+      document.querySelector('table').style.display = 'table';
+      for (let i = 7,j = 0; i < tdList.length; i+=6) {
+        tdList[i].innerHTML += scoreList[j].value;
+        j++;
+      }
+    }
+  }
+</script>
 </body>
 </html>

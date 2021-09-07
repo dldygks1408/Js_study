@@ -229,7 +229,169 @@
           </li>
         </ul>
       </article>
+      <article>
+        <h2>reduce((result,curentValue)=>{ teturn }, resultValue=0 )</h2>
+        <p>배열의 모든 요소를 하나의 값으로 줄인다.(배열의 길이만큼 함수를 호출하고(콜백함수) 하나가 된 값을 반환한다.)</p>
+        <ul>
+          <li>
+<script>
+  const arr=[10,20,30,40,50];
+  //arr.reduce( (x,y) => x+y )
+  console.log(arr.reduce(function(x, y){
+    return x + y;
+  }));
+  arr.reduce(function(x, y){
+    console.log(`x : ${x} / y : ${y}`);
+    return x + y;
+  });
 
+</script>
+          </li>
+        </ul>
+      </article>
+      <article>
+        <h2>reduceright(function(x, y){teturn})</h2>
+        <p>배열의 모든 요소를 하나의 값으로 줄인다.(배열의 길이만큼 함수를 호출하고(콜백함수) 하나가 된 값을 반환한다.)</p>
+        <ul>
+          <li>
+<script>
+
+
+</script>
+          </li>
+        </ul>
+      </article>
+      <article>
+        <h2>Array.find((v, i, s) => boolean )</h2>
+        <p>테스트를 통과한 첫번째 요소를 반환</p>
+        <ul>
+          <li>[1,2,3,4,5,"육",7].find( v => v==4 ) :
+<script>
+const arr2 = [1,2,3,4,5,"육",7];
+document.write(arr2.find( v => v==4 ));
+document.write("<br> [1,2,3,4,5,'육',7].find( v => v <= 4 ) : " + arr2.find( v => v <= 4 ));
+document.write("<br> [1,2,3,4,5,'육',7].find( v => v=='육' ) : " + arr2.find( v => v=="육" ));
+document.write("<br> [1,2,3,4,5,'육',7].find( v => v=='육' ) : " + arr2.find( v => v=="칠" ));
+</script>
+          </li>
+        </ul>
+      </article>
+      <article>
+        <h2>Array.((v, i, s) => boolean )</h2>
+        <p>테스트를 통과한 첫번째 요소의 인덱스값을 반환</p>
+        <ul>
+          <li>[1,2,3,4,5,"육",7].findIndex( v => v==4 ) :
+<script>
+document.write(arr2.findIndex( v => v==4 ));
+document.write("<br> [1,2,3,4,5,'육',7].findIndex( v => v <= 4 ) : " + arr2.findIndex( v => v <= 4 ));
+document.write("<br> [1,2,3,4,5,'육',7].findIndex( v => v >= 4 ) : " + arr2.findIndex( v => v >= 4 ));
+document.write("<br> [1,2,3,4,5,'육',7].findIndex( v => v=='육' ) : " + arr2.findIndex( v => v=="육" ));
+document.write("<br> [1,2,3,4,5,'육',7].findIndex( v => v=='육' ) : " + arr2.findIndex( v => v=="칠" ));
+</script>
+          </li>
+        </ul>
+      </article>
+      <article>
+        <h2>includes()</h2>
+        <p>배열에 해당 요소가 있는지 검사 (return boolean)</p>
+        <ul>
+          <li>
+            ["a","b","c","d","e","f"].includes("d") :
+<script>
+const arr3 = ["a","b","c","d","e","f"];
+document.write(arr3.includes("d"));
+document.write('<br>["a","b","c","d","e","f"].includes("D") : '+arr3.includes("D"));
+</script>
+          </li>
+        </ul>
+      </article>
+      <article>
+        <h2>indexOf()</h2>
+        <p>배열에 해당 요소가 있는지 검사해서 해당 위치(index)를 반환(첫번째 검색되는 항목)</p>
+        <ul>
+          <li>
+            ["a","b","c","d","d","f"].indexOf("d") :
+<script>
+const arr4 = ["a","b","c","d","d","f"];
+document.write(arr4.indexOf("d"));
+document.write('<br>["a","b","c","d","d","f"].indexOf("a") : '+arr4.indexOf("a"));
+document.write('<br>["a","b","c","d","d","f"].indexOf("D") : '+arr4.indexOf("D"));
+</script>
+          </li>
+        </ul>
+      </article>
+      <article>
+        <h2>lastIndexOf()</h2>
+        <p>배열에 해당 요소가 있는지 검사해서 해당 위치(index)를 반환(마지막에 검색되는 항목)</p>
+        <ul>
+          <li>
+            ["a","b","c","d","d","f"].lastIndexOf("d") :
+<script>
+document.write(arr4.lastIndexOf("d"));
+document.write('<br>["a","b","c","d","d","f"].lastIndexOf("a") : '+arr4.lastIndexOf("a"));
+document.write('<br>["a","b","c","d","d","f"].lastIndexOf("D") : '+arr4.lastIndexOf("D"));
+</script>
+          </li>
+        </ul>
+      </article>
+      <article>
+        <h2>keys()</h2>
+        <p>keys()를 호출하면 반복과 관련된 객체인 Iterator가 반환되고 Oterator에서 key(index)를 확인 할 수 있다.</p>
+        <p>Iterator.next() => [반환되는 데이터, 반환 할 데이터가 있는지] / forof에서 사용</p>
+        <p>[10,20,30,40,50].keys() </p>
+<script>
+const arr5 = [10,20,30,40,50];
+document.write(arr5.keys());
+</script>
+        <p>[10,20,30,40,50].keys() forof 출력 :
+<script>
+  for (key of arr5) {
+    document.write(`key : ${key}`);
+  }
+</script>
+        </p>
+        <p>Object.keys([10,20,30,40]) :
+<script>
+  document.write(Object.keys([10,20,30,40]));
+</script>
+        </p>
+      </article>
+      <article>
+        <h2>Array.isArray()</h2>
+        <p>typeof Array : object 를 반환한다. 이때 데이터가 배열인지 확인 하는 함수</p>
+        <p>배열은 기본데이터 타입이 아니기 때문에 리터럴한 입력을 사용해도 인스턴스 객체다.</p>
+        <p>let a = 10; (리터럴) // let a = new Number(10)</p>
+        <p>const b = [1,2,3] (리터럴) // const b = new Array(1,2,3)</p>
+        <ul>
+          <li>
+            typeof [1,2,3,4] :
+<script>
+document.write(typeof [1,2,3,4]);
+</script>
+          </li>
+          <li>
+            Array.isArray([1,2,3,4]) :
+<script>
+document.write(Array.isArray([1,2,3,4]));
+</script>
+          </li>
+          <li>
+            Array.isArray( new Array(1,2,3) ) :
+<script>
+document.write(Array.isArray( new Array(1,2,3) ));
+</script>
+          </li>
+          <li>
+            객체 instanceof 타입 :  객체의 타입을 비교, 이때 타입은 부모도 포함
+            <br>[1,2,3] instanceof Array :
+<script>
+document.write( [1,2,3] instanceof Array );
+document.write("<br> [1,2,3] instanceof Object :" + [1,2,3] instanceof Object );
+document.write("[1,2,3] instanceof Object :" + new Array(1,2,3) instanceof Array );
+</script>
+          </li>
+        </ul>
+      </article>
     </main>
   </body>
 </html>

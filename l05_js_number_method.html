@@ -157,6 +157,82 @@
             , 예) "asddas3.14fasdfsx" = <script>document.write(Number.parseInt("asddas3.14fasdfsx"))</script>
           </td>
         </tr>
+        <tr>
+          <td>Number()</td>
+          <td>Number(" 3.14 ") :
+<script>
+  document.write(Number(" 3.14 "));
+  document.write(`, true ${Number(true)}`);
+  document.write(`, true ${Number(new Date("1970-01-01"))}`);
+</script>
+            <br>
+            <input type="number" value="2110"> <input type="button" value="+100">
+<script>
+  const inputVal = document.querySelector('[type=number]');
+  const btnVal = document.querySelector('[type=number]');
+  btnVal.addEventListener('click', function(){
+    Number(inputVal.value) = Number(btnVal.value);
+  });
+</script>
+          </td>
+        </tr>
+        <tr>
+          <td>Number.toFixed(0보다 큰 값)</td>
+          <td>소수점 자릿수를 지정 할 수 있다. 자리수 지정시 반올림을 하고 반환되는 수는 문자열 형식이다.
+            <br>예) 5.34567.toFixed(0) :
+            <script>
+              document.write(5.34567.toFixed(0) + " typeof : " + typeof(5.34567.toFixed(1)));
+              document.write(`5.34567(1) : ${5.34567.toFixed(1)}`);
+              document.write(`5.34567(3) : ${5.34567.toFixed(3)}`);
+            </script>
+          </td>
+        </tr>
+        <tr>
+          <td>toPrecision(1보다 큰 값)</td>
+          <td>숫자를 지정된 길이로 변환한다. 변환된 숫자는 문자열 타입이다.
+            <br>예) 921.345.toPrecision(2) :
+            <script>
+              document.write(`${956.345.toPrecision(2)} , `);
+              document.write(`956.345.toPrecision(4) : ${956.345.toPrecision(4)}`);
+            </script>
+          </td>
+        </tr>
+        <tr>
+          <td>toExponential()</td>
+          <td>100 - > 1.0e+2 (지수표기법) 소수점 길이를 정하고 지수표기법으로 작성한다. 이때 반환되는 숫자는 문자열 타입니다.
+            <br>예) 50.34567.toExponential(0) :
+            <script>
+              document.write(`${50.34567.toExponential(0)} , `);
+              document.write(`50.34567.toExponential(1) : ${50.34567.toExponential(1)}`);
+            </script>
+          </td>
+        </tr>
+        <tr>
+          <td>valueOf()</td>
+          <td>인스턴스 객체인 Number에서 숫자 기본데이터 타입을 반환하는 함수
+            <br>Ex) typeof 100 :
+<script>
+console.log( typeof 13 ); //기본데이터 타입 number
+console.log( typeof new Number(13) ); //인스턴스객체 (typeof는 모든 인스턴스객체의 타입을 object로 인식한다.)
+console.log( typeof new Number(13).valueOf() ); //인스턴스 객체 Number에서 기본데이터 타입이 숫자인 value를 반환
+  document.write( typeof 100 );
+  document.write(", typeof new Number(100)" + typeof new Number(100) );
+//new Number()의 실제 데이터 타입은 Number고 object는 모든 타입의 부모다. typeof는 기본데이터 타입 외에 대부분을
+//object로 검사한다.
+</script>
+          </td>
+        </tr>
+        <tr>
+          <td>Object.toString()</td>
+          <td>Number 객체가 가지는 숫자값을 문자열로 반환한다.
+            <br>(모든 객체는 toString()을 가지고 보통 객체의 설명을 출력하도록 재정의한다.)
+            <br>new Number(100).toString() :
+<script>
+  document.write(new Number(100).toString());
+  document.write(" , typeof : " + typeof (new Number(100).toString()));
+</script>
+          </td>
+        </tr>
       </tbody>
     </table>
   </main>
