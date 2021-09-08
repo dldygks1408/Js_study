@@ -1,17 +1,48 @@
+body{
+  background: #aaa;
+}
+h1{
+  text-align: center;
+}
+button{
+  width: 50px;
+  height: 40px;
+  border-radius: 50%;
+  border: 0px;
+}
 #calenderTable{
   border: 1px solid black;
   border-collapse: collapse;
   width: 100%;
-  height: 70vh;
+  height: 100vh;
+  overflow: hidden;
+  background: #fff;
 }
-#calenderTable td,th{
+#calenderTable th{
+  background: #ddd;
   border: 1px solid black;
   height: 10vh;
   text-align: center;
 }
+#calenderTable td{
+  border: 1px solid black;
+  height: 8vh;
+  text-align: center;
+  cursor: pointer;
+}
+/* #calenderTable td.disabled{
+} */
+
 #calenderTable td:hover{
   background: rgba(110,154,146,.45);
 }
 .schedule{
-  display: none;
+  /* display: none; */
+  /* none은 사라지게 한다. -> event를 받을 수 없다. */
+  visibility: hidden;
+  /* hidden 보이지 않게 한다. */
+}
+#nowPrint{
+  float: right;
+  margin: 10px 20px;
 }

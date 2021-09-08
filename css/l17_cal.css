@@ -1,0 +1,22 @@
+#calendarTable{
+  border: 1px solid black;
+  border-collapse: collapse;
+  width: 100%;
+}
+#calendarTable td, #calendarTable th{
+border:1px solid black;
+
+}
+
+#calendarTable td:hover{
+  background-color: rgb(230,240,230);
+}
+
+#calendarTable .schedule{
+      /*  사라지게 한다. =>event를 받을 수 없다. */
+  visibility: hidden;  /*   보이지만 않게 한다. */
+}
+#calendarTable td.disabled{
+  color:rgb(130,150,150);
+  background-color:rgb(230,230,240);
+}
