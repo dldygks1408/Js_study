@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="./css/l18_calendar.css">
+  <title>js calendar</title>
+</head>
+
+<body>
+  <h1>달력</h1>
+  <h2>
+    <button class="changeMonth" id="preMonth" type="button" value="2021-8"></button>
+    <span id="toDate"></span>
+    <button class="changeMonth" id="nextMonth" type="button" value="2021-10"></button>
+  </h2>
+  <form name="changeDate">
+    <label> YEAR :
+      <input type="number" name="" value="2021">
+    </label>
+    <label> MONTH :
+      <select name="changeMonth">
+        <option value="1">1월</option>
+        <option value="2">2월</option>
+        <option value="3">3월</option>
+        <option value="4">4월</option>
+        <option value="5">5월</option>
+        <option value="6">6월</option>
+        <option value="7">7월</option>
+        <option value="8">8월</option>
+        <option value="9">9월</option>
+        <option value="10">10월</option>
+        <option value="11">11월</option>
+        <option value="12">12월</option>
+      </select>
+    </label>
+  </form>
+  <table id="calendarTable">
+    <thead>
+      <tr>
+        <th>일</th>
+        <th>월</th>
+        <th>화</th>
+        <th>수</th>
+        <th>목</th>
+        <th>금</th>
+        <th>토</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <div class="day_container">
+            <h5 class="day"></h5>
+            <ul class="schedule">
+
+
+
+
+
+            </ul>
+          </div>
+        </td>
+        <td>
+          <div class="day_container">
+            <h5 class="day"></h5>
+            <ul class="schedule">
+            </ul>
+          </div>
+        </td>
+        <td>
+          <div class="day_container">
+            <h5 class="day"></h5>
+            <ul class="schedule">
+            </ul>
+          </div>
+        </td>
+        <td>
+          <div class="day_container">
+            <h5 class="day"></h5>
+            <ul class="schedule">
+            </ul>
+          </div>
+        </td>
+        <td>
+          <div class="day_container">
+            <h5 class="day"></h5>
+            <ul class="schedule">
+            </ul>
+          </div>
+        </td>
+        <td>
+          <div class="day_container">
+            <h5 class="day"></h5>
+            <ul class="schedule">
+            </ul>
+          </div>
+        </td>
+        <td>
+          <div class="day_container">
+            <h5 class="day"></h5>
+            <ul class="schedule">
+            </ul>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="day_container">
+            <h5 class="day"></h5>
+            <ul class="schedule">
+            </ul>
+          </div>
+        </td>
+        <td>
+          <div class="day_container">
+            <h5 class="day"></h5>
+            <ul class="schedule">
+            </ul>
+          </div>
+        </td>
+        <td>
+          <div class="day_container">
+            <h5 class="day"></h5>
+            <ul class="schedule">
+            </ul>
+          </div>
+        </td>
+        <td>
+          <div class="day_container">
+            <h5 class="day"></h5>
+            <ul class="schedule">
+            </ul>
+          </div>
+        </td>
+        <td>
+          <div class="day_container">
+            <h5 class="day"></h5>
+            <ul class="schedule">
+            </ul>
+          </div>
+        </td>
+        <td>
+          <div class="day_container">
+            <h5 class="day"></h5>
+            <ul class="schedule">
+            </ul>
+          </div>
+        </td>
+        <td>
+          <div class="day_container">
+            <h5 class="day"></h5>
+            <ul class="schedule">
+            </ul>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="day_container">
+            <h5 class="day"></h5>
+            <ul class="schedule">
+            </ul>
+          </div>
+        </td>
+        <td>
+          <div class="day_container">
+            <h5 class="day"></h5>
+            <ul class="schedule">
+            </ul>
+          </div>
+        </td>
+        <td>
+          <div class="day_container">
+            <h5 class="day"></h5>
+            <ul class="schedule">
+            </ul>
+          </div>
+        </td>
+        <td>
+          <div class="day_container">
+            <h5 class="day"></h5>
+            <ul class="schedule">
+            </ul>
+          </div>
+        </td>
+        <td>
+          <div class="day_container">
+            <h5 class="day"></h5>
+            <ul class="schedule">
+            </ul>
+          </div>
+        </td>
+        <td>
+          <div class="day_container">
+            <h5 class="day"></h5>
+            <ul class="schedule">
+            </ul>
+          </div>
+        </td>
+        <td>
+          <div class="day_container">
+            <h5 class="day"></h5>
+            <ul class="schedule">
+            </ul>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="day_container">
+            <h5 class="day"></h5>
+            <ul class="schedule">
+            </ul>
+          </div>
+        </td>
+        <td>
+          <div class="day_container">
+            <h5 class="day"></h5>
+            <ul class="schedule">
+            </ul>
+          </div>
+        </td>
+        <td>
+          <div class="day_container">
+            <h5 class="day"></h5>
+            <ul class="schedule">
+            </ul>
+          </div>
+        </td>
+        <td>
+          <div class="day_container">
+            <h5 class="day"></h5>
+            <ul class="schedule">
+            </ul>
+          </div>
+        </td>
+        <td>
+          <div class="day_container">
+            <h5 class="day"></h5>
+            <ul class="schedule">
+            </ul>
+          </div>
+        </td>
+        <td>
+          <div class="day_container">
+            <h5 class="day"></h5>
+            <ul class="schedule">
+            </ul>
+          </div>
+        </td>
+        <td>
+          <div class="day_container">
+            <h5 class="day"></h5>
+            <ul class="schedule">
+            </ul>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="day_container">
+            <h5 class="day"></h5>
+            <ul class="schedule">
+            </ul>
+          </div>
+        </td>
+        <td>
+          <div class="day_container">
+            <h5 class="day"></h5>
+            <ul class="schedule">
+            </ul>
+          </div>
+        </td>
+        <td>
+          <div class="day_container">
+            <h5 class="day"></h5>
+            <ul class="schedule">
+            </ul>
+          </div>
+        </td>
+        <td>
+          <div class="day_container">
+            <h5 class="day"></h5>
+            <ul class="schedule">
+            </ul>
+          </div>
+        </td>
+        <td>
+          <div class="day_container">
+            <h5 class="day"></h5>
+            <ul class="schedule">
+            </ul>
+          </div>
+        </td>
+        <td>
+          <div class="day_container">
+            <h5 class="day"></h5>
+            <ul class="schedule">
+            </ul>
+          </div>
+        </td>
+        <td>
+          <div class="day_container">
+            <h5 class="day"></h5>
+            <ul class="schedule">
+            </ul>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="day_container">
+            <h5 class="day"></h5>
+            <ul class="schedule">
+            </ul>
+          </div>
+        </td>
+        <td>
+          <div class="day_container">
+            <h5 class="day"></h5>
+            <ul class="schedule">
+            </ul>
+          </div>
+        </td>
+        <td>
+          <div class="day_container">
+            <h5 class="day"></h5>
+            <ul class="schedule">
+            </ul>
+          </div>
+        </td>
+        <td>
+          <div class="day_container">
+            <h5 class="day"></h5>
+            <ul class="schedule">
+            </ul>
+          </div>
+        </td>
+        <td>
+          <div class="day_container">
+            <h5 class="day"></h5>
+            <ul class="schedule">
+            </ul>
+          </div>
+        </td>
+        <td>
+          <div class="day_container">
+            <h5 class="day"></h5>
+            <ul class="schedule">
+            </ul>
+          </div>
+        </td>
+        <td>
+          <div class="day_container">
+            <h5 class="day"></h5>
+            <ul class="schedule">
+            </ul>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+<script>
+  const tdList = document.querySelectorAll("#calendarTable td");
+  for (td of tdList) {
+    td.onmouseenter = (event) => {
+      event.target.querySelector(".schedule").style.visibility = "visible";
+    }
+    td.addEventListener("mouseleave", function(event) {
+      event.target.querySelector(".schedule").style.visibility = "hidden";
+    });
+  }
+  printCalendar(new Date().getMonth() + 1);
+
+  function printCalendar(paraMonth, paraYear = (new Date().getFullYear())) {
+    let dateMonth = paraMonth - 1;
+    let lastDay = new Date(paraYear, dateMonth + 1, 0).getDate();
+    let firstDay = new Date(paraYear, dateMonth, 1).getDay();
+    let lastMonth = new Date(paraYear, dateMonth, 0).getDate();
+  //──────────────────────────★ 캡슐화? 연습하기 중요 ★─────────────────────────
+    function changeButton(para_year, para_month) {
+      this.year = para_year;
+      this.month = para_month; // this.key : 객체의 키를 만들겠다.
+      this.text = `${this.year}년 ${this.month}월`;
+      this.value = `${this.year} - ${this.month}`;
+
+    }
+    const nextButton = (paraMonth + 1 == 13)
+                       ? new changeButton(paraYear + 1, 1)
+                       : new changeButton(paraYear, paraMonth + 1);
+
+    const preButton = (paraMonth - 1 == 0)
+                      ? new changeButton(paraYear - 1, 12)
+                      : new changeButton(paraYear, paraMonth - 1);
+
+    document.getElementById("toDate").innerText = `${paraYear}. ${paraMonth}`;
+    document.getElementById("nextMonth").innerText = nextButton.text;
+    document.getElementById("nextMonth").value = nextButton.value;
+    document.getElementById("preMonth").innerText = preButton.text;
+    document.getElementById("preMonth").value = preButton.value;
+
+    //───────────────────────select&input 값 공유────────────────────────────────
+    const yearValue = document.querySelector('input[type=number]');
+    const monthValue = document.querySelector("select");
+
+    monthValue.addEventListener('change', mVal => {
+      printCalendar(mVal.target.value,paraYear);
+    });
+    yearValue.addEventListener('change', yVal => {
+      printCalendar(paraMonth,yVal.target.value);
+    });
+
+    //현 month에 selected 추가 & 현 year 에 value 값 추가 해보자
+    monthValue.querySelectorAll('option').forEach( v => {
+      console.log(v);
+      //  (v.value == paraMonth)
+      // ? v.selected = true
+      // :
+
+    });
+
+    //──────────────────────────────출력문───────────────────────────────────────
+    //활성화된 해당 월 출력
+    for (let i = firstDay, d = 1; i < lastDay + firstDay; i++) {
+      tdList[i].querySelector(".day").innerText = d++;
+      tdList[i].classList.add("active"); //활성화된 td 스타일 추가
+      tdList[i].classList.remove("disabled"); //비활성화된 td 스타일 삭제
+    }
+    //비활성화된 전달의 출력
+    for (let i = firstDay - 1; i >= 0; i--) {
+      tdList[i].querySelector(".day").innerText = lastMonth--;
+      tdList[i].classList.add("disabled"); //비활성화된 td 스타일 추가
+      tdList[i].classList.remove("active"); //활성화된 td 스타일 삭제
+    }
+    //비활성화된 다음달 출력
+    let nextMonth = firstDay + lastDay
+    for (let i = nextMonth, num = 1; i <= tdList.length - 1; i++) {
+      tdList[i].querySelector(".day").innerText = num++;
+      tdList[i].classList.add("disabled"); //비활성화된 td 스타일 추가
+      tdList[i].classList.remove("active"); //활성화된 td 스타일 삭제
+    }
+  }
+  //button인 달 바꾸기만 onclick이벤트 재정의
+  document.querySelectorAll(".changeMonth[type=button]").forEach((item) => {
+    item.addEventListener("click", (event) => {
+      let yearMonthArr = event.target.value.split("-")
+      printCalendar(Number(yearMonthArr[1]), Number(yearMonthArr[0]));
+    });
+  });
+</script>
+
+</html>

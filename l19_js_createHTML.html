@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      .container{
+        /* background: linear-grint(rgb(158,173,217),rgb(163,78,164)); */
+        width:200px;
+        height:200px;
+        background: linear-gradient(rgba(191,191,167,.68),rgba(191,191,167,.68));
+      }
+    </style>
+  </head>
+  <body>
+    <h1>자바스크립트로 html 문서 조작</h1>
+    <ul id="testUL">
+      <li>1번 목록</li>
+    </ul>
+    <hr>
+    <ul>
+      <li>목록에 새로운 리스트 추가 :
+        <button type="button" onclick="insertList()">innerHTML</button>
+<script>
+  function insertList(){
+    document.getElementById('testUL').innerHTML += "<li>2번 목록</li>";
+  }
+</script>
+      </li>
+      <li>1번 목록 앞에 0번 추가 :
+        <button type="button" onclick="insertList2()">innerHTML</button>
+<script>
+  function insertList2(){
+    document.getElementById('testUL').innerHTML = "<li>0번 목록</li>" +
+    document.getElementById('testUL').innerHTML;
+    }
+</script>
+      </li>
+    </ul>
+    <hr>
+    <ul id="testUL2">
+      <li>0목록</li>
+      <li>1목록</li>
+      <li>2목록</li>
+    </ul>
+    <hr>
+    <ul>
+      <li>0과 1사이 0.5 목록 추가 :
+        <button type="button" onclick="insertList3()">innerHTML</button>
+<script>
+  function insertList3(){
+    let stringList = document.getElementById('testUL2').innerHTML;
+    let arrayList = stringList.trim().split("\n");
+    arrayList.splice(1,0,"<li>0.5 목록</li>");
+    document.getElementById('testUL2').innerHTML = arrayList.join("\n");
+  }
+</script>
+      </li>
+      <li>1번 목록 삭제 :
+        <button type="button" onclick="removeList()">innerHTML</button>
+<script>
+  function removeList(){
+    let stringList = document.getElementById('testUL2').innerHTML;
+    let arrayList = stringList.trim().split("\n");
+    arrayList.splice(1,1);
+    document.getElementById('testUL2').innerHTML = arrayList.join("\n");
+    console.log(arrayList);
+  }
+</script>
+      </li>
+    </ul>
+
+  <hr>
+  <div class="container">
+
+  </div>
+
+  </body>
+</html>

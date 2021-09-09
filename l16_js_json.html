@@ -86,6 +86,13 @@
           <li>작성법 2. (리터럴 방식)
               {key:value, key2=value2}
           </li>
+          <li>작성법 2. (this 연산자를 바로 사용 불가): window 가리킴
+              {key:value, key2:value2, key3:this.key+this.key1} (X)
+          </li>
+          <li>리터럴방식의 json 선언시 this는 블럭 내의 객체를 가르키지 않고 window를 가르킨다.(화살표 함수랑 같다)</li>
+          <li>작성법 this 사용법 (함수에서 this 사용시 블럭객체를 가르킨다.)
+              {key:value, key2:value2, key3: function(){return this.key+this.key2}} (O)
+          </li>
           <li>작성법 3. ( X 추천 X )
               const ObjectName = new Object();
               ObjectName.key = value;
