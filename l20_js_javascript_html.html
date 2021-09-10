@@ -1,76 +1,138 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>JS HTML</title>
-  </head>
-  <body>
-    <main>
-      <h1>자바스크립트로 HTML 문서 조작하기</h1>
-      <p>document.innerHTML은 문자열로 내부에 태그를 추가하거나 삭제하기 힘들다.</p>
-      <article>
-        <h2>document.element.append()</h2>
-        <p>element 자식의 가장 앞에 문자열이나 html 노드를 추가 할 수 있다.</p>
-        <p>document.createElement() 는 html 노드 객체를 생성한다.</p>
-        <p>node_object.append("") : 노드 요소 안의 내용이 추가된다.</p>
-<script>
-  //브라우저가 html 문서를 해석해서 html 요소를 객체로 만들어 배치
-  //이 때 배치된 배치표를 DOMTree라 하고 트리안의 요소를 노드라 한다.
-  //노드 요소 객체를 의미한다.
-  //liNode가 참조하는 노드객체 1개 이다.
-  let liNode = document.createElement('li');
-  console.log(liNode);
-  // liNode.append("추가");
-  liNode.innerText = "추가아";
-</script>
-        <button type="button" onclick="
+
+<head>
+  <meta charset="utf-8">
+  <title>JS HTML</title>
+</head>
+
+<body>
+  <main>
+    <h1>자바스크립트로 HTML 문서 조작하기</h1>
+    <p>document.innerHTML은 문자열로 내부에 태그를 추가하거나 삭제하기 힘들다.</p>
+    <article>
+      <h2>document.element.append()</h2>
+      <p>element 자식의 가장 앞에 문자열이나 html 노드를 추가 할 수 있다.</p>
+      <p>document.createElement() 는 html 노드 객체를 생성한다.</p>
+      <p>node_object.append("") : 노드 요소 안의 내용이 추가된다.</p>
+      <script>
+        //브라우저가 html 문서를 해석해서 html 요소를 객체로 만들어 배치
+        //이 때 배치된 배치표를 DOMTree라 하고 트리안의 요소를 노드라 한다.
+        //노드 요소 객체를 의미한다.
+        //liNode가 참조하는 노드객체 1개 이다.
+        let liNode = document.createElement('li');
+        // liNode.append("추가");
+        liNode.innerText = "추가아";
+      </script>
+      <button type="button" onclick="
           document.getElementById('appendTest').append(liNode);
         ">append</button>
-        <ul id="appendTest">
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-        </ul>
-      </article>
-      <article>
-        <h2>document.element.prepend()</h2>
-        <p>element 자식의 가장 뒤에 문자열이나 html 노드를 추가 할 수 있다.</p>
-        <button type="button" onclick="
+      <ul id="appendTest">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+      </ul>
+    </article>
+    <article>
+      <h2>document.element.prepend()</h2>
+      <p>element 자식의 가장 뒤에 문자열이나 html 노드를 추가 할 수 있다.</p>
+      <button type="button" onclick="
           document.getElementById('prependTest').prepend(liNode);
         ">prepend</button>
-        <ul id="prependTest">
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-        </ul>
-      </article>
-      <article>
-        <h2>document.element.after()</h2>
-        <p>선택자로 찾은 노드(요소)의 바로 뒤 형제에 추가</p>
-        <button type="button" onclick="
+      <ul id="prependTest">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+      </ul>
+    </article>
+    <article>
+      <h2>document.element.after()</h2>
+      <p>선택자로 찾은 노드(요소)의 바로 뒤 형제에 추가</p>
+      <button type="button" onclick="
           document.getElementById('afterTest').after(liNode);
         ">after</button>
-        <ul id="afterTest">
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-        </ul>
-<script>
-  console.log(document.querySelector('#afterTest li:nth-child(2)'));
-</script>
-      </article>
-      <article>
-        <h2>document.element.before()</h2>
-        <p>선택자로 찾은 노드(요소)의 바로 앞 형제에 추가</p>
-        <button type="button" onclick="
+      <ul id="afterTest">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+      </ul>
+    </article>
+    <article>
+      <h2>document.element.before()</h2>
+      <p>선택자로 찾은 노드(요소)의 바로 앞 형제에 추가</p>
+      <button type="button" onclick="
           document.getElementById('testdd').before(liNode);
         ">before</button>
-        <ul id="beforeTest">
-          <li>1</li>
-          <li id="testdd">2</li>
-          <li>3</li>
-        </ul>
-      </article>
-    </main>
-  </body>
+      <ul id="beforeTest">
+        <li>1</li>
+        <li id="testdd">2</li>
+        <li>3</li>
+      </ul>
+    </article>
+    <article>
+      <h2>Test</h2>
+      <p> 추가
+        <input type="text" onchange="answer0(event)" placeholder=" 0 ~  . 내용 입력">
+      </p>
+      <p>삭제 할 인덱스 입력
+        <input type="number" onblur="answer1(event)" placeholder=" 0 ~  . 삭제">
+      </p>
+      <ul id="test">
+        <li>1 <button>x</button></li>
+        <li>2 <button>x</button></li>
+        <li>3 <button>x</button></li>
+      </ul>
+<script>
+// onfocus : 입력 요소에 마우스 포인트로 찍었을때
+// onblur : 입력 요소에서 빠져 나왔을때
+
+  document.querySelectorAll('#test li button').forEach( v => { //클릭하는 버튼 갖고 오기
+    v.addEventListener('click', e => {
+      e.target.parentNode.remove();
+    })
+  });
+
+  function answer1(e){
+    console.log(e.target.value);
+    document.querySelector(`ul#test>li:nth-child(${Number(e.target.value)+1})`).remove();
+  }
+
+  function answer0(e) {
+    let inputValue = e.target.value;
+    let inputValueArr = inputValue.split(".");
+    const liList = document.querySelectorAll('ul#test li');
+    const ulList = document.querySelector("ul#test");
+    const li_node = document.createElement('li');
+    console.log(Boolean(inputValue.trim()));
+    li_node.style.color = "red";
+    console.log(inputValueArr);
+
+    if (inputValueArr.length == 2) {
+      li_node.innerHTML = "<b>"+ inputValueArr[1]+ "</b> <button onclick='this.parentNode.remove()'> X </button>";
+      if (inputValueArr[0] < 0) {
+        //ulList.prepend(li_node);
+        liList[0].before(li_node);
+        e.target.value = "";
+      } else if (inputValueArr[0] <= liList.length) {
+        liList[inputValueArr[0] - 1].after(li_node);
+        e.target.value = "";
+      } else {
+        //ulList.append(li_node);
+        liList[inputValueArr.length].after(li_node);
+        e.target.value = "";
+      }
+    } else if (inputValueArr.length == 1) {
+      li_node.innerHTML = "<b>"+ inputValueArr[0]+ "</b> <button onclick='this.parentNode.remove()'> X </button>";
+      document.querySelector("ul#test").append(li_node);
+      e.target.value = "";
+    } else {
+      alert("형식을 맞추세요*(0~.내용)");
+      e.target.value = "";
+    }
+  }
+</script>
+    </article>
+  </main>
+</body>
+
 </html>

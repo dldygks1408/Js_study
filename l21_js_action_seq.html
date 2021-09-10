@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>js action seq</title>
+    <style media="screen">
+      body{
+        background: #f5e7e7;
+      }
+      h1{
+        text-align: center;
+      }
+    </style>
+    <!--
+      <script src="./script/l21_action_seq.js" charset="utf-8"></script>
+        html node를 화면에 출력하다가 script 참조가 다운로드 될때까지 기다린다.
+
+      <script async src="./script/l21_action_seq.js" charset="utf-8"></script>
+        async : html node를 그리면서 참조 문서를 다운되면 병력식으로 실행한다.
+        변수나 함수가 선언된 스크립트문 참조시 사용 (document. node 참조할경우 X)
+
+      <script defer src="./script/l21_action_seq.js" charset="utf-8"></script>
+        defer : html node를 모두 분석이되면(출력될 준비가 완료되면 DOMContentLoaded) 참조된 문서를 실행
+        거의 모든 스크립트 참조시 사용한다.
+
+     -->
+     <script defer src="./script/l21_action_seq.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <main>
+      <script>
+        //<body>, <frame>, <iframe>, <img>, <input type="image">, <link>, <script>, <style>
+        //위 태그에만 onload 사용 가능하다.
+        window.onload = function(){
+          document.getElementById('headTitle').style.textDecoration = 'wavy underline rgb(138,210,193)';
+        }
+        //headTitle 노드가 생성되지 않은 시점이기 때문에 오류 발생
+        function cliorChange(color){
+          document.getElementById('headTitle').style.color = color;
+        }
+      </script>
+      <h1 id="headTitle" onload="alert('dd')">자바스크립트 동작 순서</h1>
+      <ul id="eventTest">
+        <li>li에 마우스를 올리면 색이 바뀐다.</li>
+        <li>ul > li 노드에 mouseenter를 재정의 한다.</li>
+      </ul>
+      <article>
+        <h2>HTML 문서에 선언된 스크립트의 동작 순서</h2>
+        <ol>
+          <li>
+            브라우저는 html 문서를 css와 병합해 DOMTree 구조를 생성한다.
+          </li>
+          <li>
+            브라우저가 병합된 구조를 보고 화면에 그래픽으로 순서대로 개체를 표현한다. (순차적언어)
+          </li>
+          <li>
+            순서대로 개체를 출력하던 중 자바스크립트 구문을 발견하면 순서대로 자바스크립트를 실행한다.
+          </li>
+          <li>
+            이때 자바스크립트가 노드 개체를 검색하던 중이면 브라우저가 해당 노드 개체를 출력해야 찾을 수 있다.
+          </li>
+        </ol>
+      </article>
+      <article>
+        <h2 id="secondTitle">순차적 언어인 HTML 과 JS가 문제를 일으키지 않게 하는 방법</h2>
+        <ul>
+          <li>자바스크립트를 모든 노드가 생성된 시점인 body 아래 작성한다.</li>
+          <li>onload : 해당하는 노드가 생성되었는지 확인 / window.onload = function(){ 스크립트 작성 } </li>
+          <li>window 객체가 완전히 생성된 시점 즉 노드가 모두 로드된 시점에 자바스크립트를 작성하면 된다.</li>
+          <li>script src="참조" 이때 defer를 지정하면 html 문서를 다 다운받고 로드한 시점에 참조된 문서를 다운</li>
+        </ul>
+
+      </article>
+      <script>
+        document.getElementById('headTitle').style.background ="rgb(59,80,117)";
+        // 위 style clior 은 적용이 안됨.
+        // alert("h1은 로드 되었음");
+        cliorChange('rgb(238,217,217)');
+        //함수를 실행하는 시점에서는 노드 개체가 생성되었기 때문
+        document.querySelectorAll('ul#eventTest > li').forEach( v => {
+          v.addEventListener('mouseenter', (e) => {
+            e.target.style.color = 'red';
+          });
+        });
+        //이벤트를 재정의 한다는 것은 각 노드에 있는 이벤트 속성의 함수를 새롭게 작성하는 것
+        const li_node = document.createElement('li');
+        li_node.innerText = "추가된 리스트";
+        li_node.onclick = function(){ this.style.color = 'pink'; }
+        document.querySelector('ul#eventTest').append(li_node);
+        //li_node 추가하기 전에 다른 li 에 이벤트를 재정의해서 li_node는 이벤트가 재정의되지 않음
+      </script>
+    </main>
+  </body>
+  <!--
+  script를 body 밑에 작성하면 모든 노드 개체가 생성되기 때문에 노드를 찾지 못하는 오류를 막을 수 있다.
+   -->
+</html>

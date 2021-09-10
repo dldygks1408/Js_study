@@ -1,0 +1,36 @@
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  body{
+    background: #f5e7e7;
+  }
+  h1{
+    text-align: center;
+    background: rgb(51,89,107);
+    line-height: 70px;
+    height: 70px;
+    color: rgb(228,236,241);
+  }
+  .schedule li{
+    padding: 10px;
+    margin: 20px;
+  }
+  .delete{
+    border: none;
+    border-radius: 50%;
+    font-size: 40px;
+    cursor: pointer;
+  }
+
+  .insert_schedule{
+    width: 90%;
+    height: 200px;
+  }
+  .memo_container1{
+    background: #eee;
+    border-radius: 30px;
+    display: inline-block;
+    margin: 0 30px;
+    /* grid-column: */
+  }
