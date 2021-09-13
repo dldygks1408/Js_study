@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>할 일 목록 메모장</title>
+    <link rel="stylesheet" href="./css/l22_js_memo2.css">
+    <script defer src="./script/l22_js_memo2.js" charset="utf-8"></script>
+  </head>
+  <body>
+        <main>
+          <h1>할 일 목록 메모장</h1>
+          <hr>
+          <article>
+            <form class="insert_schedule" name="insertSchedule">
+              <label>
+                <input type="number" name="index" value="0" max="10">
+              </label>
+              <label>
+                <input type="text" name="text" value="">
+              </label>
+              <button id="scbtn" type="button" name="regist"> 스케줄 추가</button>
+            </form>
+          </article>
+          <hr>
+          <article id="memo">
+            <div class="memo_container">
+              <h3 class="memo_Title">9월 10일 할일</h3>
+                <ul class="schedule">
+                  <li><button value="{'index':0}" class="delete" type="button"></button></li>
+                  <li><button value="{'index':1}" class="delete" type="button"></button></li>
+                  <li><button value="{'index':2}" class="delete" type="button"></button></li>
+                  <li><button value="{'index':3}" class="delete" type="button"></button></li>
+                  <li><button value="{'index':4}" class="delete" type="button"></button></li>
+                </ul>
+            </div>
+          </article>
+        </main>
+  </body>
+</html>
