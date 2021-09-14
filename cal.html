@@ -592,6 +592,7 @@
     });
     td.addEventListener('click', (e) => {
       const ulList = e.path[2].querySelector(".schedule");
+      console.log(e.path);
       const ulliList = ulList.querySelectorAll('li');
       const inputText = document.querySelectorAll('input[type=text]');
       let textArray = [];
@@ -606,14 +607,16 @@
         }
         textArray.slice(inputText.length, 5); //배열 다시 삭제로 초기화
         console.log(textArray);
+        document.getElementById('container').style.display = "none";
       });
+      for (var i = 0; i < inputText.length; i++) { //input text 값 가져오기
+        inputText[i].value = "";
+      }
     });
   }
   //new Date().getMonth() 현재 달의 -1을 반환한다.(0~11)
   printCalendar(new Date().getMonth() + 1);
   //function(para,para="default") 꼭 마지막 파라미터에 기본값을 주세요
-
-  //new Date().getYear() = 2000-1900: 100, 2021-1900: 121
   function printCalendar(paraMonth, paraYear = (new Date().getFullYear())) {
     let dateMonth = paraMonth - 1; //Date()는 month 가 0~11까지다.
     //9월 마지막 일 구하기
@@ -622,33 +625,6 @@
     let firstDay = new Date(paraYear, dateMonth, 1).getDay();
     //전달의 마지막날 구하기
     let lastMonth = new Date(paraYear, dateMonth, 0).getDate();
-    //출력문
-    // let next_button_month = paraMonth+1; //선언된 변수가 조건문의 의해 대입되지 않는 경우 기본값을 줘라(else 작성해라)
-    // let next_button_year = yearMonth+1;
-    // let pre_button_month = (paraMonth-1 == 0) ? 12 : paraMonth-1;
-    // let pre_button_year = (yearMonth-1 == 0) ? paraYear -1 : paraYear ;
-    // if (paraMonth == 13) {
-    //   next_button_month = 1;
-    //   next_button_year = +1;
-    // }
-    //json  리터럴 방식
-    // const changeMonth = {
-    //   next : {
-    //     month : paraMonth%12+1,
-    //     year : paraYear+Math.floor(paraMonth/12),
-    //     text : function(){return `${this.year}년 ${this.month}월`},
-    //     get value() {return `${this.year}년 ${this.month}월`}
-    //   },
-    //   pre : {
-    //     month : paraMonth-1,
-    //     year : paraYear,
-    //     text : function(){return `${this.year}년 ${this.month}월`},
-    //     get value() {return `${this.year}년 ${this.month}월`}
-    //   }
-    // }
-    // console.log(changeMonth.next.value);
-    // console.log(changeMonth.next.text());
-    // console.log(changeMonth.next.month); //굿
 
     //함수로 JSON 객체 선언하는 법
     function changeButton(para_year, para_month) {
@@ -663,15 +639,12 @@
                        : new changeButton(paraYear, paraMonth + 1);
 
     const preButton = (paraMonth - 1 == 0)
-                      ? new changeButton(paraYear - 1, 12) 
+                      ? new changeButton(paraYear - 1, 12)
                       : new changeButton(paraYear, paraMonth - 1);
     const changeMonth = {
       next: nextButton,
       pre: preButton
     }
-
-    console.log(nextButton);
-    console.log(preButton);
 
     document.getElementById("toDate").innerText = `${paraYear}. ${paraMonth}`;
     document.getElementById("nextMonth").innerText = `${paraYear+Math.floor(paraMonth/12)}. ${paraMonth%12+1}`;
@@ -707,7 +680,6 @@
   });
   //modal 취소
   document.querySelector('#closeModal').addEventListener('click', () => {
-
     document.getElementById('container').style.display = "none";
   });
 </script>

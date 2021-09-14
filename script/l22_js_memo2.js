@@ -35,35 +35,3 @@ function delete_Schedule(e){
   d_09_10.splice(deleteIndexObject,1);
   schedulePrint();
 }
-
-
-
-
-printCalendar(new Date().getMonth()+1);
-//function(para,para="default") 꼭 마지막 파라미터에 기본값을 주세요
-
-//new Date().getYear() = 2000-1900: 100, 2021-1900: 121
-function printCalendar(paraMonth,paraYear=(new Date().getYear()+1900)){
-  let dateMonth=paraMonth-1; //Date()는 month 가 0~11까지다.
-  //9월 마지막 일 구하기
-  let lastDay=new Date(paraYear,dateMonth+1,0).getDate();
-  //9월의 시작하는 요일 구하기
-  let firstDay=new Date(paraYear,dateMonth,1).getDay();
-  //전달의 마지막날 구하기
-  let lastMonth=new Date(paraYear,dateMonth,0).getDate();
-
-  document.getElementById("toDate").innerText=`${paraYear}. ${paraMonth}`;
-  document.getElementById("nextMonth").innerText=`${paraYear+Math.floor(paraMonth/12)}. ${paraMonth%12+1}`;
-  document.getElementById("nextMonth").value=`${paraYear+Math.floor(paraMonth/12)}-${paraMonth%12+1}`; //
-  document.getElementById("preMonth").innerText=`${paraYear-(paraMonth==1 ? 1:0)}. ${paraMonth==1 ? 12:paraMonth-1}`;
-  document.getElementById("preMonth").value=`${paraYear-(paraMonth==1 ? 1:0)}-${paraMonth==1 ? 12:paraMonth-1}`;
-}
-//button인 달 바꾸기만 onclick이벤트 재정의
-console.log('d');
-document.querySelectorAll(".changeMonth[type=button]").forEach((item) => {
-    item.addEventListener("click",(event)=>{
-      console.log(event.target.value);
-      let yearMonthArr=event.target.value.split("-")
-      printCalendar(Number(yearMonthArr[1]),Number(yearMonthArr[0]));
-    });
-});
