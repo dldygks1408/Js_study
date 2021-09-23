@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>css display</title>
+  </head>
+  <body>
+    <h1 style="text-align:center; margin:auto;">display 속성으로 노드의 레이아웃 제어</h1>
+    <article>
+      <h2>display block</h2>
+      <p>항상 새로운 라인으로 시작하고 가로폭 전체를 차지한다. <b>(width : 100% default)</b></p>
+      <ul>
+        <li>너비(width)가 지정될 시 margin이 남은 가로폭(margin-right)을 채운다.</li>
+        <li>margin-left : 0; margin-right : auto; 로 블럭이 왼쪽 정렬한다.</li>
+        <li>보통 block은 inline 요소를 포함하기 위해 지정한다.</li>
+        <li>box model의 속성을 모두 포함한다.</li>
+          <ul>
+            <li>width : 넓이, max-width : 최대넓이, min-width : 최소 넓이</li>
+            <li>height :  높이, max-height : 최대 높이, min-height : 최소 높이</li>
+            <li>padding : 컨텐츠와 보더 사이 여백 (top right bottom left)</li>
+            <ul>
+              <li>padding-top = padding : top 0 0 0</li>
+              <li>padding-right = padding : 0 right 0 0</li>
+              <li>padding-bottom = padding : 0 0 bottom 0</li>
+              <li>padding-left = padding : 0 0 0 left</li>
+            </ul>
+            <li>margin : box의 외부 여백 (top right bottom left)</li>
+              <ul>
+                <li>margin = margin :top right bottom left </li>
+              </ul>
+            <li>border : box의 윤곽선(두께, 스타일, 색)</li>
+            <ul>
+              <li>border : 1px(두께) solid(스타일) black(색상);</li>
+            </ul>
+          </ul>
+      </ul>
+    </article>
+    <article>
+      <h2>display : inline</h2>
+      <p>줄을 바꾸지 않고 다른 요소와 한행에 위치한다.
+        <b style="vertical-align: bottom;
+                  display: inline-block;
+                  font-size: 8px;
+                  /* height: 100px; */
+                  ">
+        (width : fit-content default)</b>
+      </p>
+      <ul>
+        <li>box 모델 중에 width, height, margin-top, margin-bottom 을 지정 할 수 없다.</li>
+        <li>height 대 신 line-height로 상하 여백을 지정한다.</li>
+        <li>inline의 스타일을 변경하거나 쓰임을 명시하기 위해 작성한다.</li>
+      </ul>
+    </article>
+    <article>
+      <h2>display : inline-block</h2>
+      <p>inline과 같이 줄을 바꾸지 않고 다른 요소와 한행에 위치하는데
+        block 처럼 box model모두 지정 할 수 있다.(width : fit-content default)
+      </p>
+      <ul>
+        <li>요소 내부 컨텐츠의 뒤쪽 여백을 4px로 자동 지정한다. </li>
+        <li>부모 요소의 컨텐츠(텍스트) 세로 정렬을 inline-block 내부의 컨텐츠 세로 정렬이 같이 된다.</li>
+      </ul>
+    </article>
+    <article>
+      <h2 id="noneTest" style="transition : display 2s;">display none</h2>
+      <p>
+        <label>
+          <button type="button" onclick="noneTest.style.display = 'none'">제목 없애기</button>
+          <button type="button" onclick="noneTest.style.display = 'block'">제목 나타내기</button>
+        </label>
+      </p>
+      <ul>
+        <li>display none은 해당 요소를 화면에 표시하지 않는다.</li>
+        <li>해당 요소는 노드 개체가 삭제되지는 않는다.</li>
+        <li>display 는 애니메이션 대상에서 제외된다.</li>
+        <li>https://www.w3schools.com/cssref/css_animatable.asp 사용 가능 애니메이션 참조</li>
+      </ul>
+    </article>
+    <h1>Visibility</h1>
+    <article>
+      <h2 id="hiddenTest" style="transition : visibility 2s;">visibility hidden</h2>
+      <p>
+        <label>
+          <button type="button" onclick="hiddenTest.style.visibility = 'hidden'">제목 없애기</button>
+          <button type="button" onclick="hiddenTest.style.visibility = 'visible'">제목 나타내기</button>
+        </label>
+      </p>
+      <ul>
+        <li>bisibility hidden 은 해당 요소를 화면에 표시하지 않게 한다.</li>
+        <ul>
+          <li>해당 요소의 box 속성을 그대로 남기고 보이지만 않게된다.</li>
+          <li>table의 열이나 행이 사라지지 않을 때는 collapse나 none을 사용해야한다.</li>
+        </ul>
+        <li>visibility visible은 default 값으로 해당 요소를 보이게 한다.</li>
+        <li>visivility는 애니메이션 대상에서 포함되어 있지만 오작동한다.</li>
+      </ul>
+    </article>
+    <h1>Opacity</h1>
+    <article>
+      <h2 id="opacityTest"  style="background : rgba(255,0,0,.2); transition : opacity 5s;">opacity 0</h2>
+      <h2 style="background : rgba(255,0,0,.2); transition : opacity 5s;">rgba 투명도</h2>
+      <p>
+        <label>
+          <button type="button" onclick="opacityTest.style.opacity = '1'">제목 opacity 1</button>
+          <button type="button" onclick="opacityTest.style.opacity = '.5'">제목 opacity .5</button>
+          <button type="button" onclick="opacityTest.style.opacity = '0'">제목 opacity 0</button>
+        </label>
+      </p>
+      <ul>
+        <li>opacity 0 은 visibility hidden 과 거의 동일하게 작동한다.</li>
+        <li>opacity는 요소의 투명도를 조절 할 수 있다.</li>
+        <li>rgba 로 요소의 배경 투명도를 변경하는 것과는 차이가 있다.</li>
+      </ul>
+    </article>
+    <h1>Transform</h1>
+    <article>
+      <h2 id="transformTest" style="transition : transform 2s;">transform scale(x,y)</h2>
+      <p>
+        <label>
+          <button type="button" onclick="transformTest.style.transform = 'scaleX(.0)'">transform scaleX(0)</button>
+          <button type="button" onclick="transformTest.style.transform = 'scaleX(.5)'">transform scaleX(.5) </button>
+          <button type="button" onclick="transformTest.style.transform = 'scaleX(1)'">transform scaleX(1)</button>
+          <button type="button" onclick="transformTest.style.transform = 'scaleX(1.5)'">transform scaleX(1.5)</button>
+        </label><br>
+        <label>
+          <button type="button" onclick="transformTest.style.transform = 'scaleY(.0)'">transform scaleY(0)</button>
+          <button type="button" onclick="transformTest.style.transform = 'scaleY(.5)'">transform scaleY(.5) </button>
+          <button type="button" onclick="transformTest.style.transform = 'scaleY(1)'">transform scaleY(1)</button>
+          <button type="button" onclick="transformTest.style.transform = 'scaleY(1.5)'">transform scaleY(1.5)</button>
+        </label><br>
+        <label>
+          <button type="button" onclick="transformTest.style.transform = 'scale(0,0)'">transform scale(0,0)</button>
+          <button type="button" onclick="transformTest.style.transform = 'scale(0.5,0.5)'">transform scale(0.5,0.5)</button>
+          <button type="button" onclick="transformTest.style.transform = 'scale(1)'">transform scale(1)</button>
+          <button type="button" onclick="transformTest.style.transform = 'scale(1.5,1.5)'">transform scale(1.5,1.5)</button>
+        </label>
+      </p>
+      <ul>
+        <li>style transform은 노드 개체를 2D ,3D로 변환해서 회전, 배율, 이동, 기울기 등을 변경한다.</li>
+        <li>transform을 적용한 노드는 실제 크기가 변경되는 것이 아니라 스냅샷 같은 것이 변경되서
+           화면에 표현되기 때문에 다른 개체를 밀어내거나 당기지 않는다.</li>
+        <li>transform 은 애니메이션을 적용하기에 최적의 속성이다.</li>
+      </ul>
+    </article>
+  </body>
+</html>

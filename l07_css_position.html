@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>style position</title>
+  </head>
+  <body>
+    <h1 style='text-align : center;'>POSITION</h1>
+    <p>position 요소, 노드 개체의 위치를 정의한다. (static, relative, absolute, fixed, sticky)</p>
+    <article>
+      <h2>position : static (기본위치 default)</h2>
+      <p>모든 요소, 노드 개체는 위치를 static으로 정의한다.</p>
+      <ul>
+        <li>요소의 배치는 순차적이며(위부터 아래로) <b>왼쪽</b>에서 부터 <strong>오른쪽</strong>으로 배치된다.</li>
+        <li>자식요소는 부모요소의 위치를 기준으로 배치된다.</li>
+        <li>top, bottom, left, right 를 사용 할 수 없다.</li>
+      </ul>
+    </article>
+    <article>
+      <h2>position : relative (상대적 위치)</h2>
+      <div class="parent" style="width : 200px; height : 200px; background : gray;">
+        <div id="childBox0" class="child" style="width : 150px; height : 150px; line-height : 150px;
+                                  text-align : center; background : rgba(0,0,0,.2); position : relative;
+                                  top : 0; left : 0;
+                                  transition-duration : top; transition-duration: 2s;">
+          relative BOX
+        </div>
+      </div>
+      <p>자식 박스를 상대적 위치로 이동</p>
+      <button type="button" onclick="childBox0.style.top = '100px'">top 100px</button>
+      <button type="button" onclick="childBox0.style.left = '100px'">left 100px</button>
+      <button type="button" onclick="childBox0.style.left = '0';childBox0.style.top = '0';">0px,0px</button>
+      <ul>
+        <li>상대적 위치 relative는 정적 위치 static을 기준으로 노드를 이동 시킨다. (top,left,right,bottom)</li>
+        <li>상대적 위치로 이동한 노드 개체는 다른 노드에 영향을 주지 않는다.</li>
+      </ul>
+    </article>
+    <article>
+      <h2>position : absolute (절대적 위치)</h2>
+      <div class="parent" style="width : 200px; height : 200px; background : gray;">
+        <div id="childBox1" class="child" style="width : 150px; height : 150px;
+                                  background : rgba(0,255,0,.2); position : absolute;
+                                  top : 100%; right : 0px;
+                                  ">
+          absolute BOX <br>
+          부모 노드가 static 위치 일때. <br>
+          절대적 위치의 기준은 root 노드인 body이다.
+        </div>
+      </div>
+      <ul>
+        <li>absolute는 조상 요소중 relative, absolute, fixed가 정의 되어 있으면 그 조상을 기준으로
+        위치를 이동 시킨다.
+        </li>
+        <li>만약 부모, 조상 중에 relative, absolute, fixed가 없다면 body를 기준으로 위치가 조정된다.</li>
+        <li>부유객체로 다른 요소를 밀거나 당기지 않고 덮어쓰는 형태로 존재한다.</li>
+        <li>absolute로 정의된 노드는 넓이가 content에 맞게 지정된다. 때문에 넓이를 지정하는 것이 좋다.</li>
+      </ul>
+    </article>
+    <article>
+      <h2>position : absolute 부모가 relative 일 경우</h2>
+      <div class="parent" style="width : 200px; height : 200px; background : gray; position : relative;">
+        <div id="childBox1" class="child" style="width : 150px; height : 150px;
+                                  background : rgba(0,0,255,.2); position : absolute;
+                                  top : 10px; right : 10px;">
+          absolute BOX <br>
+          부모 노드가 relative 위치 일때. <br>
+          절대적 위치의 기준은 relative 위치를 가진 부모 노드 기준
+        </div>
+      </div>
+    </article>
+    <article>
+      <h2>position : fixed (고정 위치)</h2>
+      <div class="overflowParent"
+        style="width : 300px; height : 300px;
+               border : 1px solid; overflow : auto;
+               position:relative;">
+        <h3 style="position : fixed; bottom : 0; background : rgba(221,101,235,.4)">
+          부모가 relative이고 overflow 있는 노드의 fixed 된 제목입니다.
+        </h3>
+        <p>overflow-y : scroll;</p><p>overflow-x : hidden;</p><p>overflow : hidden;</p>
+        <p>overflow : auto;</p><p>아무내용없음</p><p>아무내용없음</p>
+        <p>아무내용없음</p><p>아무내용없음</p><p>아무내용없음</p>
+        <p>아무내용없음</p><p>아무내용없음</p><p>아무내용없음</p>
+      </div>
+      <ul>
+        <li>부모 요소와 아무런 상관없이 viewport(브라우저화면)를 기준으로 노드 개체를 이동 시킨다.</li>
+        <li>fixed 역시 absolute 처럼 개체의 넓이와 높이가 content에 맞게 변경된다.</li>
+        <li>fixed 역시 부유객체로 다른 노드 개체를 덮는다.</li>
+      </ul>
+    </article>5361 4876 0111 6834 0325
+    <article>
+      <h2>position : sticky ( 위치)</h2>
+      <div class="overflowParent"
+        style="width : 300px; height : 300px;
+               border : 1px solid; overflow : auto;">
+        <h3 style="position : sticky; top : 0; background : rgba(201,236,0,.7)">
+          top : 0 sticky 제목입니다.
+        </h3>
+        <p>아무내용없음</p><p>아무내용없음</p><p>아무내용없음</p>
+        <p>아무내용없음</p><p>아무내용없음</p><p>아무내용없음</p>
+        <p>아무내용없음</p><p>아무내용없음</p><p>아무내용없음</p>
+        <p>아무내용없음</p><p>아무내용없음</p><p>아무내용없음</p>
+        <h3 style="position : sticky; bottom : 0; background : rgba(201,236,0,.7)">
+          bottom : 0 sticky 제목입니다.
+        </h3>
+      </div>
+      <ul>
+        <li>부모 요소와 아무런 상관없이 viewport(브라우저화면)를 기준으로 노드 개체를 이동 시킨다.</li>
+        <li>fixed 역시 absolute 처럼 개체의 넓이와 높이가 content에 맞게 변경된다.</li>
+        <li>fixed 역시 부유객체로 다른 노드 개체를 덮는다.</li>
+      </ul>
+    </article>
+  </body>
+</html>
