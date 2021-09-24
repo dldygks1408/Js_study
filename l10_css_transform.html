@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+<style>
+  .container{
+    border : 1px solid;
+    margin-top: 10px;
+  }
+  .box{
+    width : 80px;
+    height : 80px;
+    background : rgb(236,231,140);
+    font-size : 12px;
+    text-align : center;
+    line-height : 80px;
+    box-shadow : 8px 8px 5px rgb(174,182,141);
+    position : relative;
+    transition : transform 3s;
+    display : inline-block;
+    margin: 5px 20px;
+  }
+  .scaleBox:hover{
+    transform:scale(1.5) translate(450px,0) rotate(360deg);
+  }
+  .container.d3{
+    perspective: 300px;
+  }
+  .container.d3 .box{
+    transform : rotateY(90deg);
+  }
+  .container.d3 .rotateX:hover{
+    transform : rotateX(180deg);
+  }
+  .container.d3 .rotateY:hover{
+    transform : rotateY(180deg);
+  }
+  .container.d3 .rotateZ:hover{
+    transform : rotateZ(180deg);
+  }
+</style>
+  </head>
+  <body>
+    <h1>transform2D</h1>
+    <div class="container">
+      <div class="box scaleBox">scale(1.5)</div>
+    </div>
+    <h1>transform3D</h1>
+    <div class="container d3">
+      <div class="box">test</div>
+      <div class="box">test</div>
+      <div class="box">test</div>
+      <br>
+      <div class="box">test</div>
+      <div class="box">test</div>
+      <div class="box">test</div>
+      <br>
+      <div class="box">test</div>
+      <div class="box">test</div>
+      <div class="box">test</div>
+    </div>
+    <div class="container d3">
+      <div class="box rotateX">rotateX</div>
+      <div class="box rotateY">rotateY</div>
+      <div class="box rotateZ">rotateZ</div>
+    </div>
+  </body>
+</html>

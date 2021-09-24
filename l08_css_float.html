@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>css float</title>
+</head>
+<style media="screen">
+  .container{
+    border : 1px solid;
+  }
+  .f_left{
+    float : left;
+  }
+  .f_right{
+    float : right;
+  }
+  .box{
+    width : 100px;
+    height : 100px;
+    border : 1px solid;
+    background : black;
+    color : white;
+    text-align : center;
+    line-height : 100px;
+  }
+  .clearfix::after{
+    content : "";
+    clear : both;
+    display : table;
+  }
+</style>
+<body>
+  <main>
+    <h1>css float로 블럭 정렬하기</h1>
+    <p>float는 글자가 여러줄 있을때 그 사이 왼쪽이나 오른쪽에 블럭을 삽입하기 위해 존재한다.</p>
+    <p>display : inline-block은 글자가 한줄 있을때 삽입하기 유용하다.
+      <br>(블럭의 높이와 상관없이 한줄에 삽입되기 때문)
+    </p>
+
+    <article class="container">
+      <div class="box" style="display : inline-block">
+        inline-block
+      </div>
+      34세 직장인 A씨는 2년 전부터 비상장 스타트업에 1억원가량을 투자하고 있다.
+      한 벤처 액셀러레이터(AC)를 통해 개인투자조합에 5000만원을 가입하고 화장품 원료를 생산하는
+      바이오 스타트업에 1000만원, 프롭테크 기업에는 2000만원을 투자했다.
+      <div class="box f_right">
+      float : right
+      </div>
+      그 밖에 개별적으로 300만~500만원씩 초기 스타트업에 넣었다.
+      한 자산운용사에서 벤처투자 업무를 맡은 지인이 투자금을 넣을 때 같이 투자하기도 한다.
+      A씨가 투자한 업체는 10여 곳. 그는 “투자 기업 중 한 곳만 터져도 20~100배가량의
+      ‘잭팟’이 가능하다”며 “매일 차트를 들여다보며 마음을 졸이고 투자 포트폴리오를 조정해야
+      하는 일반 상장주식보다 돈을 묶어놓고 3~7년 뒤 회수하는 방식이 오히려 마음 편하다”고 했다.
+    </article>
+
+    <article>
+      <h2>float가 가진 문제 1</h2>
+      <ul>
+        <li>부모 노드 block이 float block을 컨텐츠로 인지하지 못한다.</li>
+      </ul>
+      <div class="container">
+        <div class="box f_left">
+          float : left
+        </div>
+        container (블럭 내부에 글자는 float를 인지한다.)
+      </div>
+    </article>
+
+    <br><br><br><br><br><hr>
+
+    <article>
+      <h2>float가 가진 문제 2</h2>
+      <ul>
+        <li>형제 노드 block이 float block을 컨텐츠로 인지하지 못한다.</li>
+      </ul>
+        <div class="box f_left">
+          float : left
+        </div>
+        <div class="box f_right">
+          float : right
+        </div>
+        <div class="container">
+          float 블럭 아래에 위치한 형제 노드
+        </div>
+        <div class="container">
+          float 블럭 두번째 아래에 위치한 형제 노드
+        </div>
+    </article>
+
+    <br><br><br><br><hr>
+
+    <article style="clear : both;">
+      <h2>문제 해결 1 clear</h2>
+      <li>형제 노드가 float를 컨텐츠로 인지 못하는 문제 해결 (clear : left, right, both)</li>
+      <div class="box f_left">float : left</div>
+      <div class="container" style="clear:left">
+        container
+      </div>
+    </article>
+
+    <article>
+      <h2>문제 해결 2 overflow</h2>
+      <li>부모 노드에 overflow를 visible(default) 외의 값을 준다.(overflow : auto, hidden ...)</li>
+      <div class="container" style="overflow : hidden">
+        <div class="box f_left">float : left</div>
+        container
+      </div>
+    </article>
+
+    <article>
+      <h2>문제 해결 3 display : inline-block</h2>
+      <li>부모 노드가 inline-block이면 자식이 float인 것을 컨텐츠로 인지한다.</li>
+      <div class="container" style="display : inline-block; width : 100%">
+        <div class="box f_left">float : left</div>
+        container
+      </div>
+    </article>
+
+    <article>
+      <h2>문제 해결 4 .clearfix::after</h2>
+      <li>.clearfix::after{ content : ""; clear : both; display : table; }</li>
+      <div class="container clearfix">
+        <div class="box f_left">float : left</div>
+        container <br>
+        ::after에 table인 공백의 컨텐츠 추가
+      </div>
+    </article>
+
+    <article>
+      <h2>float로 box 정렬하기</h2>
+      <div class="container clearfix">
+        <div class="box f_left">1 float : left</div>
+        <div class="box f_left">2 float : left</div>
+        <div class="box f_right">3 float : right</div>
+        <div class="box f_right">4 float : right</div>
+      </div>
+      <div class="container clearfix">
+        <div class="box f_left" style="width : 20%; border:none">1</div>
+        <div class="box f_left" style="width : 20%; border:none">2</div>
+        <div class="box f_left" style="width : 20%; border:none">3</div>
+        <div class="box f_left" style="width : 20%; border:none">4</div>
+        <div class="box f_left" style="width : 20%; border:none">5</div>
+      </div>
+    </article>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    
+  </main>
+</body>
+</html>

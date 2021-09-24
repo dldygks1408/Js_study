@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>css transition</title>
+<style>
+  .box{
+    width : 100px;
+    height : 100px;
+    text-align : center;
+    line-height : 100px;
+    color : white;
+    display : inline-block;
+    background : green;
+  }
+  .colorBox{
+    background : rgb(98,13,76);
+    margin-left: 90%;
+    /* padding-left: 100%; */
+  }
+  .container{
+    border : 1px solid;
+  }
+  #btnBox4{
+    transition-property : background margin;
+    transition-duration : 2s;
+  }
+  #btnBox4::active{
+    background : red;
+  }
+  #btnBox{
+    transition-property : background, margin;
+    transition-duration : 5s, 1s;
+    transition-delay : 100ms;
+    transition-timing-function : cubic-bezier(1,1.1,1,-1.72);
+    /* 마우스 포인트를 따라서 움직이는 박스 만들어보자 */
+  }
+</style>
+  </head>
+  <body>
+    <main>
+      <h1>transition으로 작은 애니메이션 만들기</h1>
+      <p>transition은 css 프로퍼티 값이 변할때 해당 변화를 일정 시간동안
+        일어나도록 해서 애니메이션을 만든다.
+      </p>
+      <div class="container">
+        <div class="box" id="btnBox">
+          클릭 하세요
+        </div>
+      </div>
+      <div class="container">
+        <div class="box" id="btnBox1"
+             style="transition : background 3s;">
+          클릭 하세요
+        </div>
+      </div>
+      <div class="container">
+        <div class="box" id="btnBox2"
+             style="transition : background 3s; background:green">
+          클릭 하세요
+        </div>
+      </div>
+      <div class="container">
+        <div class="box" id="btnBox3"
+             style="transition : background 3s;">
+          클릭 하세요
+        </div>
+      </div>
+      <div class="container">
+        <div class="box" id="btnBox4">
+          클릭 하세요
+        </div>
+      </div>
+<script>
+
+  btnBox.addEventListener('click', clickHandler);
+
+  function clickHandler(){
+    btnBox.classList.toggle('colorBox');
+  }
+//──────────────────────────────────────────────────────────────────────────────
+  btnBox1.addEventListener('click', clickHandler);
+
+  function clickHandler(){
+    (this.className == 'box')
+    ? this.className ='box colorBox'
+    : this.className = 'box'
+  }
+//──────────────────────────────────────────────────────────────────────────────
+
+  btnBox2.addEventListener('click', clickHandler2);
+  const boxColor = btnBox2.style.background;
+  console.log(boxColor);
+  function clickHandler2(){
+    let boxColorChange = this.style.background;
+    (boxColorChange == 'red')
+    ? this.style.background = boxColor
+    : this.style.background = 'red';
+  }
+
+//──────────────────────────────────────────────────────────────────────────────
+
+  //외부에 저장된 스타일 확인 1 (최신 브라우저) window.getComputedStyle(element,null).property
+  //외부에 저장된 스타일 확인 2(IE8) element.currentStyle.property
+  //요소에 직접 지정한 스타일 element.<style media="screen">
+  btnBox3.addEventListener('click', clickHandler3);
+
+  let boxBGColor = window.getComputedStyle(btnBox3, null).background;
+  console.log(boxBGColor); //color는 브라우저가 rgb로 변경해서 저장
+
+  function clickHandler3(){
+    let boxColorChange = this.style.background;
+    (boxColorChange == 'red')
+    ? btnBox3.style.background = boxBGColor
+    : btnBox3.style.background = 'red';
+  }
+</script>
+    </main>
+  </body>
+</html>
