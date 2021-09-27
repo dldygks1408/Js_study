@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>class extends 상속</title>
+  </head>
+  <body>
+    <main>
+      <h1>class 상속으로 재사용을 배우자</h1>
+      <ul>
+        <li>상속은 부모의 타입(멤버)을 물려받는 것</li>
+        <li>상속 받았을때 부모가 생성자를 작성한 경우 꼭! 부모의 생성자를 호출해야한다.( super() )
+            super()는 맨 위에 선언해야한다.
+        </li>
+        <li>멤버의 이름은 중복 될 수 없다.</li>
+        <li>get 멤버() 선언하면 멤버가 속성이 추가 된다. (멤버로 한번 더 선언하면 안된다.)</li>
+        <li>class A{name; get name(){}; name(){} <= (X) } class A{ get name(){} <= (O)}</li>
+        <li>자바스크립트에서 getter setter를 선언한 멤버는 private로 선언 한다.</li>
+        <li>부모의 함수를 재정의 하려면 함수에서 부모의 함수를 다시 호출해야 한다.</li>
+      </ul>
+<script>
+
+  class Animal{
+    name; age; bark; species; skills;
+    constructor(name,age=0,bark,species = "?",...skills){
+      this.name = name;
+      this.age = age;
+      this.bark = bark;
+      this.species = species;
+      this.skills = skills;
+    }
+    callName(){
+
+      alert(this.name);
+    }
+  }
+
+  //Dog는 Animal의 특징을 모두 가진다.
+  //Dog는 털{길이,색,곱슬}, 주인[할머니,할아버지], 후각(100M ~)
+  class Dog extends Animal{
+    hair; owner; smell;
+    constructor(name, age, bark, species, hair,owner,smell , ...skills){
+      super(name, age, bark, species, ...skills);
+      this.hair = hair;
+      this.owner = owner;
+      this.smell = smell;
+    }
+  }
+
+  class Maltese extends Dog{
+    //전역 변수 이름과 get 멤버의 이름을 동일하게 작성하지 않기 (get 멤버()가 무시당한다.)
+    //동일하게 작성하고 싶으면 꼭 private로 선언
+    // barking="자주"; smelling='자주';
+    constructor(name,age,owner,species){
+      super(name, age, '멍멍멍',species,{length : Infinity, color : 'white', curly : 'middle'},owner,500,'점프','밥먹기','달리기');
+    }
+    get barking(){
+      return '자주' + this.bark;
+    }
+    get smelling(){
+      return '자주 킁킁' + this.smell + 'm 개코'
+    }
+    callName(){
+      // super.callName()
+      alert(this.species);
+    }
+  }
+
+  const dog = new Animal('빡구', 3, '멍멍멍','백구','점프','밥먹기','달리기');
+  console.log(dog);
+  dog.callName();
+
+  const animal_dog = new Dog('빡구', 3, '멍멍멍','백구',{length : 20, color : 'white', curly : 'middle'},'할머니',500,'점프','밥먹기','달리기');
+  console.log(animal_dog);
+
+  const dog_maltese = new Maltese('빡구',"10",['할머니','할아버지'],'백구');
+  console.log(dog_maltese);
+  dog_maltese.callName();
+
+  const dog2 = Object.assign({ },dog_maltese);
+  dog2.name = '바꿔';
+  dog2.skills[1] = '으어엉'; //  '열거 가능한 자체 속성'만 목표 객체로 복사
+  // 기본값 복사용  // 배열
+  // dog2.skills[1] = 값을 바꾸면 공유함
+  console.log(dog2);
+  console.log(dog_maltese);
+
+  const dog3 = new Maltese();
+  dog3.name ='바뀐 ㄱ';
+  dog3.skills[1] = '과연';
+  console.log(dog3);
+  console.log(dog_maltese);
+
+</script>
+    </main>
+  </body>
+</html>

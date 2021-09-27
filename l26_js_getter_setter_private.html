@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>class getter setter private</title>
+  </head>
+  <body>
+    <h1>class의 은닉을 위한 getter setter private</h1>
+    <ul>getter setter
+      <li>프로그래머가 만든 약속이었다. (get멤버(){return 멤버})</li>
+      <li>은닉화된 전역변수를 필요한 부분만 드러내기 위해 만들었다.</li>
+      <li>javascript에서 get 맴버(){return 멤버} getter 를 지원 함(호출시 객체.get멤버()=>객체.멤버)</li>
+      <li>javascript에서 set 맴버(){this.멤버 = 멤버} setter 를 지원 함</li>
+      <li>private : 은닉화된 전역변수로 클래스 내부에서만 참조 가능한다. #전역변수를 생략하면 오류!</li>
+      <li>public(default) : 클래스 내부와 외부 모두에서 참조 가능한다.</li>
+    </ul>
+<script>
+
+  class Person{
+    //name; //멤버, 필드, 전역변수, 속성
+    //__name; //구식 이름 숨기기
+    #name; //private 식 필드 숨기기 => class 내부에서만 참조(enclosing class)
+    constructor(name='이름 없음'){
+      this.#name = name;
+    }
+    getName(){
+      return this.#name + '씨';
+    }
+    //필드, 멤버 변수를 설정 하고 호출하는 변수를 지원한다.
+    get name(){
+      return this.#name +'씨';
+    }
+  }
+  
+  console.log(Person.prototype);
+  console.log(new Person('Yo'));
+  const p = new Person('요한');
+  // console.log(p.#name); //오류 접근 불가 class 내부에서만 참조 가능 (은닉 캡슐화)
+  console.log(p.name);
+  console.log(p.__proto__);
+  console.log(p.getName());
+
+</script>
+  </body>
+</html>

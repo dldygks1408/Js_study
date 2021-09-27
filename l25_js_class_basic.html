@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>class basic</title>
+  </head>
+  <body>
+    <h1>javascript class</h1>
+    <ul>
+      <li>let a = "안녕"; let a = new String('안녕'); 기본데이터 타입은 모두 리터럴한 방식</li>
+      <li>const arr = [1,2,3]; (리터럴한 선언 방식) / new Array(1,2,3)</li>
+      <li>object = {name:"yo", age : 30}</li>
+      <li>class Person{constructor()} => new Person()</li>
+      <li>class 를 선언하는 이유 (캡슐화) : 사용할 객체를 사용하지 않는것과 분리(은닉),
+                                         사용하는 객체를 문제가 생기지 않도록 처리,
+                                         (속성)멤버변수를 선언하고 (행위)메서드를 선언하는 행위
+      </li>
+      <li>언어적 측면에서 접근 지정자에 의해 정의된 변수나 멤버 변수에 의해 오류가
+        발생 할 것을 사전에 방지하는 행위(name=null 기계적 오류 X)</li>
+      <li>"이_요한".split("_"), null.split("_") => 오류  위처럼 방지</li>
+      <li>class를 선언하는 이유 (재사용) : 상속으로 class를 재사용 가능 </li>
+      <li>class를 선언하는 이유 (유지보수) :
+        선언된 class를 수정하면 참조하는 모든 class가 변경된다.(유지보수 용이)</li>
+      <li>class의 단점 : 설계시 개발 속도를 느리게 한다. <br>
+                        객체가 많고 설계가 잘못되면 용량이 커진다. <br>
+                        자바스크립트는 class를 function의 대용품으로 사용중(함수가 클래스인 척 하고 있다.)
+      </li>
+
+    </ul>
+
+<script>
+  class Person{
+    //this.name; this.age; 클래스에서는 this 생략
+    name; age; //생략 가능
+    //Person 가장 가까운 자원 this
+    //this.name, this.age, this()==constructor()==new Person()
+    //모든 클래스는 생성자를 호출해야 객체를 생성 할 수 있다.
+    //Person(name, age){}
+    //무조건 constructor 선언해야한다.
+    constructor(name, age){
+      this.name = (name) ? name : '이름 없음';
+      this.age = (age>=0) ? age : '나이 오류';
+    }
+  }
+  const p1 = new Person('yo',31);
+  console.log(p1);
+  const p2 = new Person('',-1);
+  console.log(p2);
+
+
+</script>
+  </body>
+</html>
