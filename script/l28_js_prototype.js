@@ -60,6 +60,11 @@ function Person(name){
     return this.name + ' 씨';
   }
 };
+const test1 = new Person('도현');
+console.log(test1);
+console.log(test1.heyName());
+
+
 Person.prototype.age = 30;
 console.log(new Person().heyName());
 console.log(new Person().heyName.apply(nameTest));

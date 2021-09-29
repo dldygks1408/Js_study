@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>css animation</title>
+<style media="screen">
+.container{
+  border: 1px solid;
+  padding: 20px;
+}
+.box{
+  background: rgb(104,147,29);
+  width: 100px;
+  height: 100px;
+  position: relative;
+  line-height:50px;
+  text-align: center;
+  color:white;
+  box-shadow:2px 2px 5px rgb(62,64,23);
+  left:0;
+}
+.move_color{
+  transition-property: left background;
+  transition-duration: 3s;
+}
+.move_color.active{
+  left: calc(100% - 100px);
+  background: #000;
+}
+.ani_move_color{
+  animation-name: moveColor;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+.ani_move_color:hover{
+  animation-play-state : paused;
+}
+@keyframes moveColor {
+  0%{
+    left: 0;
+    transform: scale(1);
+  }
+  25%{
+    transform: rotateX(360deg);
+  }
+  50%{
+    left: calc(100% - 100px);
+    background: #000;
+    box-shadow: 20px 20px 30px rgba(0,0,0,0.5);
+    transform: scale(1)
+  }
+  75%{
+    transform: scale(1.5);
+  }
+  100%{
+    left: 0;
+    background: #000;
+  }
+}
+.box.turn_move{
+  animation-name : turnMove;
+  animation-duration : 5s;
+  animation-delay : 500ms;
+}
+.fill_none{
+  animation-fill-mode: none;
+}
+.fill_forwards{
+  animation-fill-mode: forwards;
+}
+.fill_backwards{
+  animation-fill-mode: backwards;
+}
+.fill_both{
+  animation-fill-mode: both;
+}
+@keyframes turnMove{
+  from{
+    right : 50px;
+    transform : rotate(20deg);
+  }
+  to{
+    left : calc(100% - 100px);
+    transform : rotate(360deg);
+  }
+}
+.move_around{
+  animation-name: moveAround;
+  animation-duration : 5s;
+  animation-iteration-count : infinite;
+}
+@keyframes moveAround {
+  0%{ left : 0; top : 0; }
+  25%{ left : calc(100% - 100px); top : 0; }
+  50%{ left : calc(100% - 100px); top : calc(100% - 100px); }
+  75%{ left : 0; top : calc(100% - 100px); }
+  100%{ left : 0; top : 0; }
+}
+.turn_x_hover{
+  position: relative;
+  perspective: 1000px;
+  width:100px;
+  height:100px;
+  border: 1px solid;
+}
+.turn_x_hover .card{
+  transform:  rotateX(0deg);
+  transform-origin: right center;
+  transition: all 2s;
+  position: absolute;
+  top:0;
+  left:0;
+  opacity:1;
+}
+.turn_x_hover .card_label{
+  transform:rotateX(90deg);
+  transform-origin: left center;
+  transition: all 2s;
+  position: absolute;
+  top:0;
+  left:0;
+  z-index:0;
+  opacity:0;
+}
+
+.turn_x_hover:hover .card{
+  transform: rotateX(90deg);
+  opacity:0;
+
+}
+.turn_x_hover:hover .card_label{
+  transform: rotateX(0deg);
+  opacity:1;
+
+}
+</style>
+  </head>
+  <body>
+    <main>
+      <h1>css animation으로 복잡한 애니메이션을 만들기</h1>
+      <article>
+        <h2>transition으로 박스 움직이고 색 바꾸기</h2>
+        <div class="container">
+          <div class="box move_color" onclick="this.classList.toggle('active')">transition <br> BOX</div>
+        </div>
+        <h2>animation으로 박스 움직이고 색 바꾸기</h2>
+        <div class="container">
+          <div class="box" onclick="this.classList.add('ani_move_color')">animation <br> BOX</div>
+        </div>
+        <h2>animation 은 javascript의 setInterval 만드는 동작물을 간단하게 작성 할 수 있다.</h2>
+        <ul>
+          <li>animation : name duration 모든 프로퍼티를 작성 (shorthand syntax)</li>
+          <li>animation-name : @keyframes 이름을 지정
+            (이벤트로 애니메이션을 등록 할때 등록할 요소에 animation-name을 추가하면 된다.
+            만약 동작하지 않으면 이름이 정의된 클래스를 추가하면 된다.)</li>
+          <li>@keyframes animation-name : 애니메이션이 동작하는 단계를 나눠서 설정</li>
+          <li>animation-duration : 한 싸이클의 에니메이션이 소유되는 시간( s or ms, default 0)</li>
+          <li>animation-timing-function : 애니메이션의 속도를 나타내는 함수(default ease)</li>
+          <li>animation-delay : 요소가 시작될 시점 ( -delay : 애니메이션이 동작된 미래를 나타낸다.)</li>
+          <li>animation-interation-count : 애니메이션의 재생 횟수 (default : 1,infinite)</li>
+          <li>animation-play-state : 애니메이션의 재생 상태를 지정 (정지 : paused)(default : running)</li>
+          <li>animation-direction :
+            <ul>
+              <li>nomal : from 0 ~ to 100 (default),
+              <li>reverse : to 100 ~ from 0,
+              <li>alternate : 홀수번째-nomal, 짝수번째는-reverse ,
+              <li>alternate-reverse : alternate 반대)</li>
+            </ul>
+          <li>animation-fill-mode :
+            <ul>
+              <li>none : 시작점에서 keyframes 0% 에 적용된 스타일을 적용하지 않고 대기한다.</li>
+                <br>애니메이션이 종료되면 원래 상태로 되돌리고 종료한다.
+              <li>forwards : none과 시작은 같고 애니메이션이 종료되면 그 상태 그대로 종료한다.(transition)</li>
+              <li>backwards : 시작점에서 from에 적용된 스타일을 적용하고 대기한다. none과 종료가 같다.</li>
+              <li>both : 시작은 backwards와 같고 종료는 forwards와 같다.</li>
+            </ul>
+          </li>
+        </ul>
+      </article>
+      <article>
+        <h2>turn move box (fill-move:none)</h2>
+        <div class="container">
+          <div class="box turn_move fill_none">fill_none <br> BOX</div>
+        </div>
+        <h2>turn move box (fill-move:forwards)</h2>
+        <div class="container">
+          <div class="box turn_move fill_forwards">fill_forwards <br> BOX</div>
+        </div>
+        <h2>turn move box (fill-move:backwards)</h2>
+        <div class="container">
+          <div class="box turn_move fill_backwards">fill_backwards <br> BOX</div>
+        </div>
+        <h2>turn move box (fill-move:both)</h2>
+        <div class="container">
+          <div class="box turn_move fill_both">fill_both <br> BOX</div>
+        </div>
+      </article>
+      <article>
+        <h2>move around box</h2>
+        animation-direction :
+        <select id="selectBox">
+          <option value="normal">normal</option>
+          <option value="reverse">reverse</option>
+          <option value="alternate">alternate</option>
+          <option value="alternate-reverse">alternate-reverse</option>
+        </select>
+        <div class="container" style="height : 500px;">
+          <div class="box" id='move_around_box'>BOX</div>
+        </div>
+      </article>
+      <h2>스와핑되는 카드</h2>
+      <div class="turn_x_hover">
+        <div class="card  box"></div>
+        <div class="card_label  box" style="background:red"></div>
+      </div>
+    </main>
+<script>
+  selectBox.addEventListener('change', ()=>{
+    move_around_box.classList.add('move_around');
+    move_around_box.style.animationDirection = selectBox.value;
+  })
+</script>
+    <br><br><br><br><br><br><br><br><br><br>
+
+  </body>
+</html>

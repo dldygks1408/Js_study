@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+  <button type="button" id="btn">ㅂㅌ</button>
+  <button type="button" id="btn2">ㅂㅌ</button>
+
+<script>
+  console.log(this);
+
+  function fn(){
+    console.log(this);
+  }
+
+  const obj = {
+    data : {
+      fn2(){
+        console.log(this);
+      }
+    },
+    fn1 : function(){
+      console.log(this);
+    }
+  }
+  fn();
+  obj.fn1();
+  obj.data.fn2();
+
+  function Person(){
+    this.name = 'Lee';
+  }
+
+  const obj2 = new Person();
+  console.log(obj2);
+
+  btn.addEventListener('click', function(e){
+    console.log(this);
+    console.log(e.currentTarget);
+    console.log(e.target);
+    let testArr = ['a','b','c'];
+    testArr.forEach( function(a){
+      console.log(a);
+      console.log(this);
+    })
+  });
+
+  let obj3 = {
+    names : ['김','이','박'],
+    fn3 : function(){
+      console.log(this);
+      obj3.names.forEach( ()=> {
+        console.log(this); //arrow function 내부의 this값을 변화시키지 않음
+        //부모 this 값?
+      });
+    }
+  }
+  obj3.fn3();
+
+  let fn4 = a => a + 10 ;
+  console.log(fn4(5));
+
+  [1,2,3,4].forEach( a => console.log(a));
+
+  let obj4 = {
+    fn5 : () => {
+      console.log(this);//부모 this값을 갖고 옴 (에로우)
+    }
+  }
+
+  obj4.fn5();
+
+  let Person2 = {
+    name : this.name,
+    fn6 : function(){
+      return this.name + '입니다'
+    }
+  }
+
+  console.log(Person2.name = '요요');
+  console.log(Person2.fn6());
+  const obj5 = {
+    data : [1,2,3,4,5]
+  }
+
+  obj5.plus = function(){
+    let result = 0;
+    this.data.forEach((item)=>{
+      result += item;
+    });
+    console.log(result);
+  }
+
+  obj5.plus();
+
+  console.log(obj5.data);
+
+
+  btn2.addEventListener('click', function(e) {
+    setTimeout(testPrint, 1000);
+  });
+
+  let testPrint = function(){
+    console.log(this);
+  }
+
+</script>
+  </body>
+</html>
