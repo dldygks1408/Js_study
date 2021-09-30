@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>JS bind</title>
+  </head>
+  <body>
+    <main>
+      <h1>JS의 바인드로 객체에 필드를 정의</h1>
+      <p>function.prototype.bind() : bind(object)는 함수의 멤버(this)를 object로 묶어준다.</p>
+      <article>
+        <h2>bind</h2>
+        <button type="button" id="button1">button1</button>
+        <button type="button" id="button2">button2</button>
+        <button type="button" id="button3">button3</button>
+<script>
+  const literal_obj = {
+    a : '난 a',
+    b : '난 b',
+    callA : function(){
+      return this.a + '호출';
+    }
+  }
+  literal_obj.callB = function(){
+    return this.b + '호출';
+  }
+
+  console.log('literal_obj.callA() : ', literal_obj.callA());
+  console.log('literal_obj.callB() : ', literal_obj.callB());
+
+  const unbind_callA = literal_obj.callA.bind(literal_obj);
+  const unbind_callB = literal_obj.callB;
+  console.log('unbind_callA() bind : ', unbind_callA());
+  console.log('unbind_callB() : ', unbind_callB());
+
+
+  const a = function(){return this.name + '씨 안녕하세요.'}
+  console.log(a);
+  console.log(a());
+  // a <- 참조중인 함수를 가르킨다.
+  // a() <- 함수를 실행
+  const bind_a = a.bind( {name : 'Yohan'} );
+  console.log(bind_a());
+
+  button1.addEventListener('click', function(){
+    console.log(this); //button1
+  })
+
+  button2.addEventListener('click', function(){
+    setTimeout(function(){
+      console.log(this); //window
+    },1000);
+  })
+  button3.addEventListener('click', function(){
+    setTimeout(()=>{
+      console.log(this); //button3
+    },1000);
+  })
+</script>
+      </article>
+    </main>
+  </body>
+</html>

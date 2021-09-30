@@ -27,7 +27,85 @@
             </li>
           </ul>
         </li>
+        <li>함수를 선언하면 prototype이 생성된다.</li>
+        <li>함수를 선언할때 {} body 안을 this(멤버, 필드, 속성)이라 한다.
+        이 멤버는 객체를 생성할 때 해당 객체의 prototype이 된다.
+        (객체는 별개의 prototype를 검색 할 수 없다.)</li>
+        <li>상속받지 않은 함수는 부모가 자기 자신의 prototype이고
+          prototype은 (Object.prototype) + (함수.constructor)다.
+        (.__proto__.__proto__ 가 object 다 )</li>
+<script>
+  function A(para_a, para_b){
+    this.a = 'a'
+    this.b = function(){return 'b'};
+  }
+  A.prototype.c = function() { return this.a + 'cc'};
+
+
+  console.group('function A() :');
+  console.log('A', A);
+  console.log('A.prototype : ', A.prototype);
+  console.log('A.__proto__ : ', A.__proto__);
+  console.groupEnd();
+
+  const a = new A( "aaa", "bbb");
+
+  console.group('new A() :');
+  console.log('new A', a);
+  console.log('new A.prototype : ', a.prototype); //undefined
+  console.log('new A.__proto__ : ', a.__proto__);
+  console.groupEnd();
+</script>
       </ul>
+      <h2>인스턴스객체 (new)의 프로토타입</h2>
+      <ul>
+        <li>함수를 new 생성한 객체는 prototype은 아니지만 자기 자신이 프로토 타입처럼
+        쓰인다.</li>
+        <li>객체의 부모의 함수의 생성자가 있다.</li>
+        <li>객체를 생성하면 생성한 함수가 객체의 부모가 된다.</li>
+        <li>함수 객체의 부모는 최상위 객체인 objcet거나 또다른 부모 함수 프로토타입이다.</li>
+      </ul>
+      <h2>class의 프로토타입</h2>
+      <ul>
+        <li>class는 function(함수)의 슈거코드로 함수다.</li>
+        <li>함수와 차이점이 있다면 class에 선언된 필드중에 함수가 프로토타입에 선언된다.</li>
+        <li>object.create()는 객체를 생성하고 상속하는 원시적 방법으로 객체를 생성할 때
+          프로토타입을 공유하기 때문이다.(부모의 필드는 자식이 __proto__링크한다.)
+          필드에 선언된 함수를 상속 받을 수 없다.
+          때문에 함수는 프로토타입에 선언해야한다.</li>
+        <li>prototype은 정적 <-> (인스턴스 new)으로 언제든 참조 가능하다.
+          때문에 prototype에 선언된 함수는 객체 생성없이 호출가능하다.</li>
+      </ul>
+<script>
+'use strict'
+//class는 class인척 하는 함수다.
+  class Clock{
+    constructor(a, b){
+      this.a = a;
+      this.b = b;
+    }
+    c(){
+      return 'ccc';
+    }
+  }
+
+  console.group('class Clock');
+  console.log('class Clock{}', Clock);
+  console.log('class Clock{}.prototype : ', Clock.prototype.c());
+  console.log('class Clock{}.__proto__ : ', Clock.__proto__);
+  console.groupEnd();
+
+  const clock = new Clock('똑',"딱");
+  console.group('new Clock()');
+  console.log('class Clock{}', clock);
+  console.log('class Clock{}.prototype : ', clock.prototype);
+  console.log('class Clock{}.__proto__ : ', clock.__proto__);
+  console.log('class Clock{}.c()', clock.c());
+  console.groupEnd();
+
+
+
+</script>
     </main>
   </body>
 </html>
