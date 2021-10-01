@@ -1,0 +1,28 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+td button {
+  width: 30px;
+}
+#calculator{
+  width: 200px;
+  border: 2px solid;
+  text-align: center;
+  margin: auto;
+  padding: 10px;
+  background: #ccc;
+}
+#tableContainer table{
+  margin: auto;
+}
