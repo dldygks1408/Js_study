@@ -28,7 +28,6 @@ function Calculator(){
   function print_result(){
     let printResult = process;
     setResult(eval(printResult));
-
   }
 
   function reset(){

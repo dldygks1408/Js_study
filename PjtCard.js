@@ -8,7 +8,7 @@ function PjtCard(){
   return(
     <div className={styles.grid_container}>
 
-      <div className={`${styles.card_container} 'card_container'`} >
+      <div className={`${styles.card_container} card_container`} >
         <img src={calImg} width = '200' height='280' />
         <h2>계산기</h2>
         <p>dddd</p>
@@ -31,7 +31,7 @@ function PjtCard(){
 
       <div className={styles.card_container} >
         <img src='' width = '200' height='280' />
-        <h2>test...</h2>
+        <h2>일정 메모</h2>
         <p>dddd</p>
         <Link to='/cal'> 보러가기 </Link>
       </div>
