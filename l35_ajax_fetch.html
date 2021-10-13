@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>fetch</h1>
+  <script>
+    /*
+    async function gtimeOut(url, selector){
+      setTimeout(await function(){
+        fetch(url)
+          .then(response =>  response.text())
+          .then(respText => document.querySelector(selector).innerHTML = respText)
+      },2000)
+    }
+
+    gtimeOut('load_body.html', '#loadAjax1');
+    gtimeOut('load_body2.html', '#loadAjax2');
+    gtimeOut('load_body3.html', '#loadAjax3');
+    */
+
+    fetch('load_body.html')
+    .then(response => loadAjax1.innerHTML = response.text())
+    .then(response => loadAjax1.innerHTML = response) 
+
+     
+
+ /*   
+  function promiseReq(url, method="GET"){ 
+    return new Promise((resolve, reject)=>{
+      setTimeout(()=>{
+        const req = new XMLHttpRequest();
+        req.open(method,url);
+        req.onload = function(){
+          resolve(req.responseText);
+        }
+        req.send();
+      },2000)
+    })
+  }
+  async function loadBodys(){
+    await promiseReq('load_body.html')
+    .then((res)=>{
+      loadAjax1.innerHTML = res
+    })
+    await promiseReq('load_body2.html')
+    .then((res)=>{
+      loadAjax2.innerHTML = res
+    })
+    await promiseReq('load_body3.html')
+    .then((res)=>{
+      loadAjax3.innerHTML = res
+    })
+  }
+
+  loadBodys();
+*/
+  </script>
+
+  <div id="loadAjax1"></div>
+  <div id="loadAjax2"></div>
+  <div id="loadAjax3"></div>
+</body>
+</html>

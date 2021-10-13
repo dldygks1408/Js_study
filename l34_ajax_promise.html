@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>AJAX Promise</h1>  
+  <div id="loadAjax1"></div>
+  <div id="loadAjax2"></div>
+  <div id="loadAjax3"></div>
+
+
+  <script>
+/*
+  function setTimeReq(url, selector, method='GET'){
+    const req = new XMLHttpRequest(); //통신 준비
+    req.open(method, url);
+    //onreadystatechange 요청을 총 5단계로 실행
+    // req.onreadystatechange = function(){ req.readyState === this.DONE }
+    //onload 요청의 마지막 단계만 실행 (readyState === 4) 일때만
+    req.onload = function(){
+      console.log(req.readyState);
+      if(req.status === 200){
+        document.querySelector(selector).innerHTML = req.responseText;
+      }
+    }
+    req.send();
+  }
+*/
+  //setTimeReq 함수를 setTimeout의 callback 함수로 재정의 (O)
+  //setTimeout(setTimeReq,2000);
+  //setTimeReq함수의 실행을 setTimeout의 callback 함수로 재정의 (X) 
+  //setTimeout(setTimeReq("load_body.html","#loadAjax1"),2000);
+  //react에서 익명함수를 콜백함수로 재정의하는 것과 같은 방법
+
+//──────────────────────────────── 옛날 방식 ───────────────────────────────────
+
+  //setTimeout(()=>{setTimeReq("load_body.html","#loadAjax1")},2000);
+  //setTimeout(()=>{setTimeReq("load_body2.html","#loadAjax2")},3000);
+  //setTimeout(()=>{setTimeReq("load_body3.html","#loadAjax3")},4000);
+
+//────────────────────────────── callback hell ─────────────────────────────────────
+/*
+  setTimeout(()=>{
+    const req = new XMLHttpRequest();
+    req.open('GET', 'load_body.html');
+
+    req.onload = function(){
+      if(req.status === 200){
+        document.querySelector('#loadAjax1').innerHTML = req.responseText;
+      }
+
+      const req2 = new XMLHttpRequest();
+      req2.open('GET', 'load_body2.html');
+    
+      req2.onload = function(){
+        if(req2.status === 200){
+          document.querySelector('#loadAjax2').innerHTML = req2.responseText;
+        }
+
+        const req3 = new XMLHttpRequest();
+        req3.open('GET', 'load_body3.html');
+    
+        req3.onload = function(){
+          if(req3.status === 200){
+            document.querySelector('#loadAjax3').innerHTML = req3.responseText;
+          }
+        }
+        req3.send();
+      }
+      req2.send();
+    }
+    req.send();
+  },2000)
+*/
+//─────────────────────────────── Promise then ────────────────────────────────────
+/*
+  function promiseReq(url, method="GET"){
+    return new Promise((resolve, reject)=>{
+      setTimeout(()=>{
+        const req = new XMLHttpRequest();
+        req.open(method,url);
+        req.onload = function(){
+          resolve(req.responseText);
+        }
+        req.send();
+      },2000)
+    })
+  }
+
+  promiseReq('load_body.html')
+  .then((resolvMsg)=>{
+    loadAjax1.innerHTML = resolvMsg;
+  })
+  .then(()=>{
+    promiseReq('load_body2.html')
+    .then((resolvMsg)=>{
+    loadAjax2.innerHTML = resolvMsg;
+    })
+    .then(()=>{
+      promiseReq('load_body3.html')
+      .then((resolvMsg)=>{
+      loadAjax3.innerHTML = resolvMsg;
+      })
+    })
+  })
+*/
+//────────────────────────────── async await ─────────────────────────────────────
+  function promiseReq(url, method="GET"){ 
+    return new Promise((resolve, reject)=>{
+      setTimeout(()=>{
+        const req = new XMLHttpRequest();
+        req.open(method,url);
+        req.onload = function(){
+          resolve(req.responseText);
+        }
+        req.send();
+      },2000)
+    })
+  }
+  async function loadBodys(){
+    await promiseReq('load_body.html')
+    .then((res)=>{
+      loadAjax1.innerHTML = res
+    })
+    await promiseReq('load_body2.html')
+    .then((res)=>{
+      loadAjax2.innerHTML = res
+    })
+    await promiseReq('load_body3.html')
+    .then((res)=>{
+      loadAjax3.innerHTML = res
+    })
+  }
+
+  loadBodys();
+
+
+
+
+
+
+  </script>
+
+</body>
+</html>
