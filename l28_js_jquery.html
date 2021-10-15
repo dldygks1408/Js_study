@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javascript jQuery</title>
+  <script src="http://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+  <script src="./l28_js_jquery.js" defer></script>
+  <style>
+    .active{
+      background-color: rgb(155, 91, 91);
+      font-size: larger;
+    }
+  </style>
+</head>
+<body>
+  <h1>jQuery 라이브러리</h1>
+  <ul class="jq_ul">
+    <li>$(selectorStr) : 제이쿼리 선택자 ( == document.querySelectAll(selectorStr) )</li>
+    <li>$(".jq_ul li").click( function(props){ ... } ) == document.querySelectAll(".jq_ul li").foreach(li=>{ li.onclick = function(props){ ... } })</li>
+    <li>제이쿼리는 이벤트를 chain 할 수 있다.</li>
+    <li>제이쿼리는 복수의 선택자로 찾은 dom을 반복문 없이 재정의할 수 있다. ( 반복문 생략 )</li>
+    <li>제이쿼리를 시작하려면 꼭 $()를 작성해야한다.</li>
+  </ul>
+</body>
+</html>

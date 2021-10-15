@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+  <title>Document</title>
+  <style>
+    .ui-selected{
+      background-color: blueviolet;
+    }
+  </style>
+</head>
+<body>
+  <h2>jQuery UI 사용</h2>
+  <article>
+    <h3>Dialog 생성</h3>
+    <div id="dialogEx" title="타이틀">
+      <p>jQuery Dialog 생성</p>
+    </div>
+  </article>
+
+  <ol id="selectable">
+    <li class="ui-widget-content"><span class="test">1</span> Item 1</li>
+    <li class="ui-widget-content"><span class="test">2</span> Item 2</li>
+    <li class="ui-widget-content"><span class="test">3</span> Item 3</li>
+    <li class="ui-widget-content"><span class="test">4</span> Item 4</li>
+    <li class="ui-widget-content"><span class="test">5</span> Item 5</li>
+    <li class="ui-widget-content"><span class="test">6</span> Item 6</li>
+    <li class="ui-widget-content"><span class="test">7</span> Item 7</li>
+  </ol>
+
+<script>
+  $('#dialogEx').dialog();
+
+    $( "#selectable" ).selectable(
+      $('#selectable li').sortable()
+    );
+
+</script>
+</body>
+</html>
